@@ -1,4 +1,6 @@
+layout: post
 title: {{ title }}
-date: {{ date }}
+comment: true
 tags:
+date: {{ date }}
 ---
