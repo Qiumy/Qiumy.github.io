@@ -1,7 +1,7 @@
 layout: post
-title: Git学习笔记(一)
+title: Git学习笔记
 comment: true
-date: 2016-04-01 17:17:41
+date: 2016-04-04 10:38:00
 tags: [Git,技术,笔记] 
 ---
 ## Git相关概念
@@ -148,6 +148,33 @@ doc/*.txt
 # ignore all .pdf files in the doc/ directory 
 doc/**/*.pdf
 ```
+
+## 服务器上的Git
+### Git用来传输资料的四种主要协议：本地协议、HTTP协议、SSH协议和Git协议。
+- 本地协议：远程版本就是硬盘内的另一个目录
+```
+$ git clone file://opt/git/project.git
+```
+- HTTP协议
+```
+$ git clone https://example.com/gitproject.git
+```
+- SSH协议
+```
+$ git clone ssh://user@server/project.git
+$ git clone user@server:project.git
+```
+- Git协议
+这是包含在 Git 里的一个特殊的守护进程；它监听在一个特定的端口（9418），类似于 SSH 服务，但是访问无需任何授权。
+
+## 分布式Git
+集成管理者工作流程
+1. 项目为辅着推送到主仓库
+2. 贡献者克隆此仓库，做出修改
+3. 贡献者将数据推送到自己的公开仓库
+4. 贡献者给维护者发送邮件，请求拉取自己的更新
+5. 维护者在自己本地的仓库中，将贡献者的仓库加为远程仓库并合并修改
+6. 维护者将合并后的修改推送到主仓库
 
 ## 参考资料
 [https://git-scm.com/book/zh/v2](https://git-scm.com/book/zh/v2)
