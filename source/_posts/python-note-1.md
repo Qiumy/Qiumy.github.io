@@ -120,15 +120,6 @@ with oepn('test.txt','w') as f:
     f.write('test"
 ```
 
-## 8.使用with自动关闭资源
-```python
-with 表达式 [as 目标]
-    代码块
-    
-with oepn('test.txt','w') as f:
-    f.write('test"
-```
-
 ## 9.避免finally中可能发生的陷阱
 ```python
 def returnTest(a):
