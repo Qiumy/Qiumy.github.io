@@ -1,7 +1,7 @@
 layout: post
 title: Python学习笔记（一）
 comment: true
-date: 2016-04-05 15:31:50
+date: 2016-04-08 15:31:50
 tags: [Python,技术,笔记] 
 ---
 ## 1.将常量集中到一个文件中
@@ -119,3 +119,86 @@ with 表达式 [as 目标]
 with oepn('test.txt','w') as f:
     f.write('test"
 ```
+
+## 8.使用with自动关闭资源
+```python
+with 表达式 [as 目标]
+    代码块
+    
+with oepn('test.txt','w') as f:
+    f.write('test"
+```
+
+## 9.避免finally中可能发生的陷阱
+```python
+def returnTest(a):
+    try:
+        if a<=0:
+            raise ValueError("data can not be negative")
+        else:
+            return a
+    except ValueError as e:
+        print e
+    finally:
+        print "The End!"
+        return -1
+```
+程序returnTest(0)和returnTest(2)的返回值都为-1.第一个调用returnTest(0)在抛出ValueError异常后直接执行finally语句，返回值为-1；第二个调用returnTest(2)会执行else分支，但是由于**存在finally语句，在执行else语句的return 啊之前会先执行finally中的语句return -1，程序就直接返回了**。
+
+## 10.sort()和sorted()
+```python
+sorted(iterable[, cmp[,key[,reverse]]])
+s.sort([cmp[,key[,reverse]]])
+```
+- cmp为用户定义的任何比较函数，函数的参数为两个可比较的元素
+- key是一个带参数的函数，用来为每个元素提取比较值
+- reverse表示排序结果是够反转
+
+## 11.lambda函数
+```python
+map(lambda x:x+1,[1,2,3])
+
+a = [1,2,3]
+r = []
+for each in a:
+    r.append(each+1)
+```
+
+## 12.python的深拷贝和浅拷贝
+```python
+a = [1,2,3]
+b = a
+b.append(4)  #a = [1,2,3,4], b = [1,2,3,4]
+```
+复制操作b=a，是浅拷贝，当b的值发生改变时，a的值也改变
+```python
+a = [1,2,3]
+c = [i for i in a]
+c.append(4)   #a = [1,2,3] c = [1,2,3,4]
+```
+上面的例子是深拷贝吗？
+```python
+a = [1,2,[3,4]]
+d = [i for i in a]  # 等同于 d = a[:]
+d[-1].append(5) #a = [1,2,[3,4,5]] d = [1,2,[3,4,5]] 
+```
+使用for循环操作时候，把a中的每个对象的引用拷贝，a中的前3个元素是字符串对象，在python中，字符串对象复制操作是：变量指向存放字符串的位置，实际上还是浅拷贝
+```python
+In [25]: a = [1,2,[3,4,5]]
+
+In [26]: c = a[:]
+
+In [27]: map(lambda x:id(x),a)
+Out[27]: [6580408L, 6580384L, 63220936L]
+
+In [28]: map(lambda x:id(x),c)
+Out[28]: [6580408L, 6580384L, 63220936L]
+```
+可以看到a和c中每个对象的地址都是一样的
+```python
+import copy
+a = [1,2,[3,4]]
+e = copy.deepcopy(a)
+e[-1].append(5)   # a = [1,2,[3,4]] e = [1,2,[3,4,5]]
+```
+上面的例子就是深拷贝
