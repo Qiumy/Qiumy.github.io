@@ -11,7 +11,7 @@ tags: [算法,算法导论,技术,笔记]
 
 二叉堆是一个数组，近似的完全二叉树，给定结点的下标i，容易获得其父节点、左孩子、有孩子的下标。
 
-```python
+```python?linenums
 def parent(i):
 	return (i-1)/2
 def left(i):
