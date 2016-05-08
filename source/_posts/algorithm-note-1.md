@@ -2,7 +2,7 @@ layout: post
 title: 算法导论笔记（一）—— Chap 2 算法基础
 comment: true
 date: 2016-05-03 20:03:04
-tags: [算法,技术,笔记] 
+tags: [算法,算法导论,技术,笔记] 
 ---
 
 # 第2章 算法基础

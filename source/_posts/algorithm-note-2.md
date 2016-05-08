@@ -2,7 +2,7 @@ layout: post
 title: 算法导论笔记（二）—— Chap 4 分治策略
 comment: true
 date: 2016-05-05 23:07:54
-tags: [算法,技术,笔记] 
+tags: [算法,算法导论,技术,笔记] 
 ---
 
 # 分治策略
