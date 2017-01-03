@@ -2,10 +2,10 @@
 ## Docs: http://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# Site 
+# Site
 title: Slurm's blog
 subtitle: 不想码代码的程序媛
-description: 
+description:
 author: Slurm
 email: qiumy3@mail2.sysu.edu.cn
 language: zh-Hans
@@ -62,7 +62,7 @@ tag: 1
 ## Hexo uses Connect as a server
 ## You can customize the logger format as defined in
 ## http://www.senchalabs.org/connect/logger.html
-port: 4000
+port: 5000
 server_ip: localhost
 logger: false
 logger_format: dev
@@ -94,6 +94,6 @@ deploy:
   #branch: master
   repo:
     github: git@github.com:Qiumy/Qiumy.github.io.git,master
-    coding: git@git.coding.net:qiumy/Hexo-blog-backup.git,master	
-	
-	
+    coding: git@git.coding.net:qiumy/Hexo-blog-backup.git,master
+
+
