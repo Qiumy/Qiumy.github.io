@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>算法导论笔记（二）—— Chap 4 分治策略 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分治策略最大子数组问题：给定数组A，寻找A的和最大的非空连续子数组
+
+O(n^2)解法：A的子数组的个数共有n+n-1+n-2+….+2+1 = n(n+1)/2个。对于每个数组求和，并记录最大值，sum(A[i…j]) = sum(A[i…j-1]) + A[j]
+
+1234567891011121314def max_subarray1(nums):	max_sum = min(nums)	l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论笔记（二）—— Chap 4 分治策略">
+<meta property="og:url" content="https://qiumy.github.io/2016/05/05/algorithm-note-2/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="分治策略最大子数组问题：给定数组A，寻找A的和最大的非空连续子数组
+
+O(n^2)解法：A的子数组的个数共有n+n-1+n-2+….+2+1 = n(n+1)/2个。对于每个数组求和，并记录最大值，sum(A[i…j]) = sum(A[i…j-1]) + A[j]
+
+1234567891011121314def max_subarray1(nums):	max_sum = min(nums)	l">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法导论笔记（二）—— Chap 4 分治策略">
+<meta name="twitter:description" content="分治策略最大子数组问题：给定数组A，寻找A的和最大的非空连续子数组
+
+O(n^2)解法：A的子数组的个数共有n+n-1+n-2+….+2+1 = n(n+1)/2个。对于每个数组求和，并记录最大值，sum(A[i…j]) = sum(A[i…j-1]) + A[j]
+
+1234567891011121314def max_subarray1(nums):	max_sum = min(nums)	l">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-algorithm-note-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法导论笔记（二）—— Chap 4 分治策略
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h1><h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>问题：给定数组A，寻找A的和最大的非空连续子数组</p>
+<ul>
+<li>O(n^2)解法：A的子数组的个数共有n+n-1+n-2+….+2+1 = n(n+1)/2个。对于每个数组求和，并记录最大值，sum(A[i…j]) = sum(A[i…j-1]) + A[j]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subarray1</span><span class="params">(nums)</span>:</span></div><div class="line">	max_sum = min(nums)</div><div class="line">	left_idx, right_idx = <span class="number">0</span>, len(nums)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(nums)):</div><div class="line">			tmp_sum = <span class="number">0</span></div><div class="line">			<span class="keyword">for</span> k <span class="keyword">in</span> range(i, j+<span class="number">1</span>):</div><div class="line">				tmp_sum += nums[k]</div><div class="line">			<span class="keyword">if</span> tmp_sum &gt; max_sum:</div><div class="line">				max_sum = tmp_sum</div><div class="line">				left_idx = i</div><div class="line">				right_idx = j</div><div class="line">	<span class="keyword">return</span> (left_idx, right_idx, max_sum)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><strong>分治算法</strong>：A[low,…high]的任何连续子数组A[i,..j]所处的位置必然是一下三种情况之一：</li>
+</ul>
+<ol>
+<li>完全位于子数组A[low,…mid]中，因此low≤i≤j≤mid</li>
+<li>完全位于子数组A[mid+1,…high]中，因此mid&lt;i≤j≤high</li>
+<li>跨越了中点，因此low≤i≤mid&lt;j≤high</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subarray2</span><span class="params">(nums,low,high)</span>:</span></div><div class="line">	<span class="keyword">if</span> low == high:</div><div class="line">		<span class="keyword">return</span> (low, high, nums[low])</div><div class="line"></div><div class="line">	max_sum = min(nums)</div><div class="line">	left_idx, right_idx = <span class="number">0</span>, len(nums)</div><div class="line"></div><div class="line">	mid = (low+high)/<span class="number">2</span></div><div class="line">	cross_low, cross_high = mid, mid</div><div class="line"></div><div class="line">	left_max_sum = tmp_sum = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(mid,low<span class="number">-1</span>,<span class="number">-1</span>):</div><div class="line">		tmp_sum += nums[i]</div><div class="line"></div><div class="line">		<span class="keyword">if</span> tmp_sum &gt; left_max_sum:</div><div class="line">			cross_low = i</div><div class="line">			left_max_sum = tmp_sum</div><div class="line"></div><div class="line">	right_max_sum = tmp_sum = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(mid+<span class="number">1</span>, high+<span class="number">1</span>):</div><div class="line">		tmp_sum += nums[i]</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> tmp_sum &gt; right_max_sum:</div><div class="line">			cross_high = i</div><div class="line">			right_max_sum = tmp_sum</div><div class="line"></div><div class="line">	left_low, left_high, left_sum = max_subarray2(nums,low,mid)</div><div class="line">	right_low, right_high, right_sum = max_subarray2(nums,mid+<span class="number">1</span>,high)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> left_sum &gt;= left_max_sum+right_max_sum <span class="keyword">and</span> left_sum &gt;= right_sum:</div><div class="line">		<span class="keyword">return</span> (left_low, left_high, left_sum)</div><div class="line">	<span class="keyword">elif</span> right_sum &gt;= left_max_sum+right_max_sum <span class="keyword">and</span> right_sum &gt;= left_sum:</div><div class="line">		<span class="keyword">return</span> (right_low, right_high, right_sum)</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		<span class="keyword">return</span> (cross_low, cross_high, left_max_sum+right_max_sum)</div></pre></td></tr></table></figure>
+<ul>
+<li>O(n)解法：每次元素累加和小于0时，从下一个元素重新开始累加。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subarray3</span><span class="params">(nums)</span>:</span></div><div class="line">	max_so_far = max_ending_here = <span class="number">0</span> <span class="keyword">if</span> max(nums)&gt;=<span class="number">0</span> <span class="keyword">else</span> min(nums)</div><div class="line">	left_idx, right_idx = <span class="number">0</span>, len(nums)<span class="number">-1</span></div><div class="line">	left_tmp_idx, right_tmp_idx = left_idx, right_idx</div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(nums)):</div><div class="line">		<span class="keyword">if</span> max_ending_here + nums[i] &gt; nums[i]:</div><div class="line">			right_tmp_idx = i</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			left_tmp_idx = i</div><div class="line">		max_ending_here = max(max_ending_here+nums[i], nums[i])</div><div class="line">		<span class="keyword">if</span> max_so_far &lt; max_ending_here:</div><div class="line">			max_so_far = max_ending_here</div><div class="line">			left_idx = left_tmp_idx</div><div class="line">			right_idx = right_tmp_idx</div><div class="line">	<span class="keyword">return</span> (left_idx, right_idx, max_so_far)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/05/algorithm-note-2/" class="archive-article-date">
+  	<time datetime="2016-05-05T15:07:54.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-05</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法导论/">算法导论</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/05/08/algorithm-note-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          算法导论笔记（三）—— Chap 6 堆排序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/03/algorithm-note-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法导论笔记（一）—— Chap 2 算法基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="algorithm-note-2" data-title="算法导论笔记（二）—— Chap 4 分治策略" data-url="https://qiumy.github.io/2016/05/05/algorithm-note-2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>CentOS7安装Openstack【Keystone篇】 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="环境准备——MySQL的安装MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。
+
+安装
+
+1# yum install mariadb-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安装Openstack【Keystone篇】">
+<meta property="og:url" content="https://qiumy.github.io/2017/01/03/openstack-keystone/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="环境准备——MySQL的安装MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。
+
+安装
+
+1# yum install mariadb-">
+<meta property="og:updated_time" content="2017-01-03T12:31:53.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7安装Openstack【Keystone篇】">
+<meta name="twitter:description" content="环境准备——MySQL的安装MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。
+
+安装
+
+1# yum install mariadb-">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-openstack-keystone" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS7安装Openstack【Keystone篇】
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="环境准备——MySQL的安装"><a href="#环境准备——MySQL的安装" class="headerlink" title="环境准备——MySQL的安装"></a>环境准备——MySQL的安装</h1><p>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># yum install mariadb-server mariadb</div></pre></td></tr></table></figure>
+<ul>
+<li>常用命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl start mariadb  #启动MariaDB</div><div class="line">systemctl stop mariadb  #停止MariaDB</div><div class="line">systemctl restart mariadb  #重启MariaDB</div><div class="line">systemctl enable mariadb  #设置开机启动</div></pre></td></tr></table></figure>
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mysql -u root -p</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="Keystone安装"><a href="#Keystone安装" class="headerlink" title="Keystone安装"></a>Keystone安装</h1><p>keystone是openstack中验证组件。<a href="http://docs.openstack.org/liberty/zh_CN/install-guide-rdo/common/get_started_identity.html" target="_blank" rel="external">参考</a></p>
+<ul>
+<li>创建数据库并授权</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># mysql -u root -p</div><div class="line">MariaDB[(none)] &gt; CREATE DATABASE keystone;</div><div class="line">MariaDB[(none)] &gt; GRANT ALL PRIVILEGES ON keystone.* TO &apos;keystone&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;KEYSTONE_DBPASS&apos;;</div><div class="line">MariaDB[(none)] &gt; GRANT ALL PRIVILEGES ON keystone.* TO &apos;keystone&apos;@&apos;%&apos; IDENTIFIED BY &apos;KEYSTONE_DBPASS&apos;;</div><div class="line">MariaDB[(none)] &gt; exit;</div></pre></td></tr></table></figure>
+<ul>
+<li>生成一个随机值作为管理员的令牌</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl rand -hex 10</div></pre></td></tr></table></figure>
+<ul>
+<li>安装Keystone包及相关组件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># yum install openstack-keystone httpd mod_wsgi memcached python-memcached</div></pre></td></tr></table></figure>
+<ul>
+<li>启动Memcached服务，并且配置它随机启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># systemctl enable memcached.service</div><div class="line"># systemctl start memcached.service</div></pre></td></tr></table></figure>
+<ul>
+<li><p>编辑文件<code>\etc\keystone\keystone.conf</code>,做如下的修改</p>
+<ul>
+<li><p>在<code>[DEFAULT]</code>修改<code>ADMIN_TOKEN</code>为刚刚的随机数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line">···</div><div class="line">admin_token = ADMIN_TOKEN</div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>[database]</code>配置数据库访问</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[database]</div><div class="line">...</div><div class="line">connection = mysql:<span class="comment">//keystone:KEYSTONE_DBPASS@controller/keystone</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>[memcache]</code>配置Memcached服务</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[memcache]</div><div class="line">...</div><div class="line">servers = localhost:<span class="number">11211</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>[token]</code>配置 UUID token provider和Memcached驱动</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[token]</div><div class="line">...</div><div class="line"><span class="attribute">provider</span> = uuid</div><div class="line"><span class="attribute">driver</span> = memcache</div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>[revoke]</code>部分，配置SQL 回滚驱动:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[revoke]</div><div class="line">...</div><div class="line">driver = sql</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>初始化身份认证服务的数据库</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">su</span> -s /bin/<span class="keyword">sh</span> -c <span class="string">"keystone-manage db_sync"</span> keystone</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启Keystone</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># systemctl keystone restart</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>/etc/hosts</code>文件</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ServerIP controller</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="创建服务实体和API端点"><a href="#创建服务实体和API端点" class="headerlink" title="创建服务实体和API端点"></a>创建服务实体和API端点</h1><ul>
+<li><p>配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ export OS_TOKEN=ADMIN_TOKEN</div><div class="line">$ export OS_URL=http://controller:35357/v3</div><div class="line">$ export OS_IDENTITY_API_VERSION=3</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建admin租户、用户、角色</p>
+<ul>
+<li><p>创建admin租户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone tenant-create --name admin --description &quot;Admin Tenant&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建admin用户</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="comment">user</span><span class="literal">-</span><span class="comment">create</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">pass</span> <span class="comment">ADMIN_PASS</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">email</span> <span class="comment">EMAIL_ADDRESS</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>创建admin角色</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone role-<span class="built_in">create</span> <span class="comment">--name admin</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>添加admin角色到admin用户和租户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone user-role-add --user admin --tenant admin --role admin</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>创建Demo租户、用户、角色</p>
+<ul>
+<li><p>创建demo租户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone tenant-create --name demo --description &quot;Demo Tenant&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建demo租户下的用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone user-create --name demo --tenant demo --pass DEMO_PASS --email EMAIL_ADDRESS</div></pre></td></tr></table></figure>
+<p>PS：至此demod用户完毕注意：在创建demo tenant的同时，demo  user,demo role会自动创建</p>
+</li>
+</ul>
+</li>
+<li><p>创建service租户</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">keystone </span><span class="string">tenant-create </span><span class="built_in">--name</span> <span class="string">service </span><span class="built_in">--description</span> <span class="string">"Service Tenant"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>创建   service entity and API endpoints</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">keystone </span><span class="string">service-create </span><span class="built_in">--name</span> <span class="string">keystone </span><span class="built_in">--type</span> <span class="string">identity </span><span class="built_in">--description</span> <span class="string">"OpenStack Identity"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>创建API endpoints</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">keystone endpoint-create \</div><div class="line">  --service-id $(keystone service-list | awk &apos;/ identity / &#123;print $2&#125;&apos;) \</div><div class="line">  --publicurl http://controller:5000/v2.0 \</div><div class="line">  --internalurl http://controller:5000/v2.0 \</div><div class="line">  --adminurl http://controller:35357/v2.0 \</div><div class="line">  --region regionOne</div></pre></td></tr></table></figure>
+</li>
+<li><p>验证操作</p>
+<ul>
+<li><p>admin租户获取token</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">tenant</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">username</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">password</span> <span class="comment">ADMIN_PASS</span> <span class="comment">\</span></div><div class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">auth</span><span class="literal">-</span><span class="comment">url</span> <span class="comment">http://controller:35357/v2</span><span class="string">.</span><span class="comment">0</span> <span class="comment">token</span><span class="literal">-</span><span class="comment">get</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>列出租户(tenant)</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">tenant</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">username</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">password</span> <span class="comment">ADMIN_PASS</span> <span class="comment">\</span></div><div class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">auth</span><span class="literal">-</span><span class="comment">url</span> <span class="comment">http://controller:35357/v2</span><span class="string">.</span><span class="comment">0</span> <span class="comment">tenant</span><span class="literal">-</span><span class="comment">list</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>列出用户（user）</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">tenant</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">username</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">password</span> <span class="comment">ADMIN_PASS</span> <span class="comment">\</span></div><div class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">auth</span><span class="literal">-</span><span class="comment">url</span> <span class="comment">http://controller:35357/v2</span><span class="string">.</span><span class="comment">0</span> <span class="comment">user</span><span class="literal">-</span><span class="comment">list</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>列出角色（role）</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">tenant</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">username</span> <span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">password</span> <span class="comment">ADMIN_PASS</span> <span class="comment">\</span></div><div class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">auth</span><span class="literal">-</span><span class="comment">url</span> <span class="comment">http://controller:35357/v2</span><span class="string">.</span><span class="comment">0</span> <span class="comment">role</span><span class="literal">-</span><span class="comment">list</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>demo 租户获取令牌token</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">keystone</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">tenant</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">demo</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">username</span> <span class="comment">demo</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">password</span> <span class="comment">DEMO_PASS</span> <span class="comment">\</span></div><div class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">os</span><span class="literal">-</span><span class="comment">auth</span><span class="literal">-</span><span class="comment">url</span> <span class="comment">http://controller:35357/v2</span><span class="string">.</span><span class="comment">0</span> <span class="comment">token</span><span class="literal">-</span><span class="comment">get</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>demo用户无权查看user，会报错误如下：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">keystone <span class="comment">--os-tenant-name demo --os-username demo --os-password DEMO_PASS \</span></div><div class="line"><span class="comment">--os-auth-url http://controller:35357/v2.0 user-list</span></div><div class="line">You are <span class="keyword">not</span> authorized <span class="built_in">to</span> perform <span class="keyword">the</span> requested action: admin_required (HTTP <span class="number">403</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="创建-OpenStack-客户端环境脚本"><a href="#创建-OpenStack-客户端环境脚本" class="headerlink" title="创建 OpenStack 客户端环境脚本"></a>创建 OpenStack 客户端环境脚本</h1><ul>
+<li><p>创建admin环境变量, 编辑<code>admin-openrc.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> OS_TENANT_NAME=admin</div><div class="line"><span class="built_in">export</span> OS_USERNAME=admin</div><div class="line"><span class="built_in">export</span> OS_PASSWORD=ADMIN_PASS</div><div class="line"><span class="built_in">export</span> OS_AUTH_URL=http://controller:35357/v2.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建demo环境变量, 编辑<code>demo-openrc.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> OS_TENANT_NAME=demo</div><div class="line"><span class="built_in">export</span> OS_USERNAME=demo</div><div class="line"><span class="built_in">export</span> OS_PASSWORD=DEMO_PASS</div><div class="line"><span class="built_in">export</span> OS_AUTH_URL=http://controller:5000/v2.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>脚本的使用</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">source</span> admin-openrc.<span class="keyword">sh</span></div><div class="line"><span class="keyword">source</span> demo-openrc.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/01/03/openstack-keystone/" class="archive-article-date">
+  	<time datetime="2017-01-03T11:23:44.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS7/">CentOS7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keystone/">Keystone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openstack/">Openstack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/16/algorithm-note-7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法导论笔记（七）—— Chap 10 基本数据结构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="openstack-keystone" data-title="CentOS7安装Openstack【Keystone篇】" data-url="https://qiumy.github.io/2017/01/03/openstack-keystone/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

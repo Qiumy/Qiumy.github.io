@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Python学习笔记（一） | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.将常量集中到一个文件中将存放常量的文件命名为constant.py，并在其中定义一系列常量123456789101112131415161718class _const:    class ConstError(TypeError): pass    class ConstCaseError(ConstError): pass        def __setattr__(self,name,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记（一）">
+<meta property="og:url" content="https://qiumy.github.io/2016/04/08/python-note-1/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="1.将常量集中到一个文件中将存放常量的文件命名为constant.py，并在其中定义一系列常量123456789101112131415161718class _const:    class ConstError(TypeError): pass    class ConstCaseError(ConstError): pass        def __setattr__(self,name,">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记（一）">
+<meta name="twitter:description" content="1.将常量集中到一个文件中将存放常量的文件命名为constant.py，并在其中定义一系列常量123456789101112131415161718class _const:    class ConstError(TypeError): pass    class ConstCaseError(ConstError): pass        def __setattr__(self,name,">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-python-note-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-将常量集中到一个文件中"><a href="#1-将常量集中到一个文件中" class="headerlink" title="1.将常量集中到一个文件中"></a>1.将常量集中到一个文件中</h2><p>将存放常量的文件命名为constant.py，并在其中定义一系列常量<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">_const</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstError</span><span class="params">(TypeError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstCaseError</span><span class="params">(ConstError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self,name,value)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__dict__.has_key(name):</div><div class="line">            <span class="keyword">raise</span> self.ConstError, <span class="string">"Can't change const. %s"</span> % name</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> name.isupper():</div><div class="line">            <span class="keyword">raise</span> self.ConstCaseError, \</div><div class="line">            <span class="string">'const name "%s" is not all uppercase'</span> % name</div><div class="line">        self.__dict__[name] = value</div><div class="line"></div><div class="line"><span class="keyword">import</span> sysy</div><div class="line">sys.modules[__name__] = _const()</div><div class="line"><span class="keyword">import</span> const</div><div class="line">const.MY_CONSTANT = <span class="number">1</span></div><div class="line">const.MY_SECOND_CONSTANT = <span class="number">2</span></div><div class="line">const.MY_THIRD_CONSTANT = <span class="string">'a'</span></div></pre></td></tr></table></figure></p>
+<p>当在其他模块中引用这些变量时，按照如下方式进行即可<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> constant <span class="keyword">import</span> <span class="keyword">const</span></div><div class="line"><span class="built_in">print</span> <span class="keyword">const</span>.MY_CONSTANT</div><div class="line"><span class="built_in">print</span> <span class="keyword">const</span>.MY_SECOND_CONSTANT*<span class="number">2</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="2-充分利用Lazy-evaluaion的特性"><a href="#2-充分利用Lazy-evaluaion的特性" class="headerlink" title="2.充分利用Lazy evaluaion的特性"></a>2.充分利用Lazy evaluaion的特性</h2><p>对于or条件表达式应该将值为真可能性较好的变量写在or前面，而and则应该推后——对于Python中的条件表达式if x and y，在x为false的情况下y表达式的值将不再计算。而对于if x or y，当x的值为true的时候，将直接返回，不再计算y的值。</p>
+<h2 id="3-浮点数准确吗？"><a href="#3-浮点数准确吗？" class="headerlink" title="3.浮点数准确吗？"></a>3.浮点数准确吗？</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> i!=<span class="number">1.5</span>:</div><div class="line">    i = i + <span class="number">0.1</span></div><div class="line">    <span class="keyword">print</span> i</div></pre></td></tr></table></figure>
+<p>上面的代码会导致无限不循环，原因是浮点数的存储规则决定了不是所有的浮点数都能准确表示，有些是不准确的，只是无限接近。如0.1转换为二进制表示形式为0.000110011001···在内存中根据浮点数的位数规定，多余部分直接截断，因此当循环到底5次的时候i的实际值为1.5000000000000004，则条件表达式i!=1.5显然为True，循环陷入无终止状态。<br>如果计算对精度要求较高，可以使用Decimal来进行处理或者将浮点手尽量扩大为整数，计算完毕后在转换回去。对于在while中使用i!=1.5这种条件表达式也要避免，浮点数的比较最好能够指明精度。</p>
+<h2 id="4-警惕eval-的安全漏洞"><a href="#4-警惕eval-的安全漏洞" class="headerlink" title="4.警惕eval()的安全漏洞"></a>4.警惕eval()的安全漏洞</h2><p>Python中的eval()函数将字符串str当成有效地表达式来求值并返回计算结果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eval(<span class="string">'__import__("os").system("dir")'</span>)</div><div class="line"><span class="comment"># 将输入当前所在目录的所有文件</span></div></pre></td></tr></table></figure></p>
+<p>如果使用对象不是信任源，应该尽量避免使用eval，在需要使用eval的地方可用安全性更好的ast.literal_eval替代</p>
+<h2 id="5-使用enumerate-获取序列迭代的索引和值"><a href="#5-使用enumerate-获取序列迭代的索引和值" class="headerlink" title="5.使用enumerate()获取序列迭代的索引和值"></a>5.使用enumerate()获取序列迭代的索引和值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">li = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>]</div><div class="line"><span class="keyword">for</span> i ,e <span class="keyword">in</span> enumerate(li):</div><div class="line">    <span class="keyword">print</span> <span class="string">"index:"</span>,i,<span class="string">"element:"</span>,e</div></pre></td></tr></table></figure>
+<h2 id="6-分清-与is的使用场景"><a href="#6-分清-与is的使用场景" class="headerlink" title="6.分清==与is的使用场景"></a>6.分清==与is的使用场景</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">"HI"</span></div><div class="line">b = <span class="string">"HI"</span></div><div class="line">a is b  # <span class="literal">True</span></div><div class="line">a == b  # <span class="literal">False</span></div><div class="line"></div><div class="line">a1 = <span class="string">"I am using long string for testing"</span></div><div class="line">b1 = <span class="string">"I am using long string for testing"</span></div><div class="line">a1 is b1  # <span class="literal">False</span></div><div class="line">a1 == b1  # <span class="literal">True</span></div><div class="line"></div><div class="line">str1 = <span class="string">"string"</span></div><div class="line">str2 = <span class="string">""</span>.join([<span class="string">'s'</span>,<span class="string">'t'</span>,<span class="string">'r'</span>,<span class="string">'i'</span>,<span class="string">'n'</span>,<span class="string">'g'</span>])</div><div class="line">str1 is str2  # <span class="literal">False</span></div><div class="line">str1 == str2  # <span class="literal">True</span></div></pre></td></tr></table></figure>
+<p>两种操作的意义</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is</td>
+<td>object identity</td>
+</tr>
+<tr>
+<td>==</td>
+<td>equal</td>
+</tr>
+</tbody>
+</table>
+<p>is的作用是用来检查对象的标示符是否相等。x is y仅当x和y是同一个对象的时候才会返回True，相当于id(x) == id(y)。==是用来检验两个对象的值是否相等的，实际调用的是内部<code>__eq__()</code>方法，所以==操作符可以被重载，而is不能被重载。</p>
+<h2 id="7-Python中的字符串"><a href="#7-Python中的字符串" class="headerlink" title="7.Python中的字符串"></a>7.Python中的字符串</h2><ol>
+<li><p>进行源文件编码声明</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 三种声明方式</span></div><div class="line"></div><div class="line"><span class="comment"># coding=&lt;encoding name&gt;</span></div><div class="line"></div><div class="line"><span class="comment"># !/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: &lt;encoding name&gt; -*-</span></div><div class="line"></div><div class="line"><span class="comment"># !/usr/bin/python</span></div><div class="line"><span class="comment"># vim: set fileencoding=&lt;encoding name&gt; :</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使用+操作符来进行字符串的连接是，如<code>&quot;中文测试&quot; + u&quot;Chinese Test&quot;</code>，左边为中文字符串，类型为str，右边为Unicode字符串。Python中默认的编码是ASCII编码，当编码值在0~127的时候Unicode和ASCII是兼容的，但当其值大于128的时候，ASCII编码便不能正常处理这种情况，解决方法有以下两种</p>
+</li>
+</ol>
+<ul>
+<li><p>指定str转为Unicode时的编码方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line">s = <span class="string">"中文测试"</span>.decode(<span class="string">'gbk'</span>)+<span class="string">u"Chinese Test"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>将Unicode字符串进行UTF-8编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"中文测试"</span> + <span class="string">u"Chinese Test"</span>.encode(<span class="string">"utf-8"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="8-使用with自动关闭资源"><a href="#8-使用with自动关闭资源" class="headerlink" title="8.使用with自动关闭资源"></a>8.使用with自动关闭资源</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> 表达式 [<span class="keyword">as</span> 目标]</div><div class="line">    代码块</div><div class="line">    </div><div class="line"><span class="keyword">with</span> oepn(<span class="string">'test.txt'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">    f.write(<span class="string">'test"</span></div></pre></td></tr></table></figure>
+<h2 id="9-避免finally中可能发生的陷阱"><a href="#9-避免finally中可能发生的陷阱" class="headerlink" title="9.避免finally中可能发生的陷阱"></a>9.避免finally中可能发生的陷阱</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">returnTest</span><span class="params">(a)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> a&lt;=<span class="number">0</span>:</div><div class="line">            <span class="keyword">raise</span> ValueError(<span class="string">"data can not be negative"</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> a</div><div class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</div><div class="line">        <span class="keyword">print</span> e</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"The End!"</span></div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span></div></pre></td></tr></table></figure>
+<p>程序returnTest(0)和returnTest(2)的返回值都为-1.第一个调用returnTest(0)在抛出ValueError异常后直接执行finally语句，返回值为-1；第二个调用returnTest(2)会执行else分支，但是由于<strong>存在finally语句，在执行else语句的return 啊之前会先执行finally中的语句return -1，程序就直接返回了</strong>。</p>
+<h2 id="10-sort-和sorted"><a href="#10-sort-和sorted" class="headerlink" title="10.sort()和sorted()"></a>10.sort()和sorted()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sorted(iterable[, cmp[,key[,reverse]]])</div><div class="line">s.sort([cmp[,key[,reverse]]])</div></pre></td></tr></table></figure>
+<ul>
+<li>cmp为用户定义的任何比较函数，函数的参数为两个可比较的元素</li>
+<li>key是一个带参数的函数，用来为每个元素提取比较值</li>
+<li>reverse表示排序结果是够反转</li>
+</ul>
+<h2 id="11-lambda函数"><a href="#11-lambda函数" class="headerlink" title="11.lambda函数"></a>11.lambda函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">map(<span class="keyword">lambda</span> x:x+<span class="number">1</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line"></div><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">r = []</div><div class="line"><span class="keyword">for</span> each <span class="keyword">in</span> a:</div><div class="line">    r.append(each+<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h2 id="12-python的深拷贝和浅拷贝"><a href="#12-python的深拷贝和浅拷贝" class="headerlink" title="12.python的深拷贝和浅拷贝"></a>12.python的深拷贝和浅拷贝</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">b = a</div><div class="line">b.append(<span class="number">4</span>)  <span class="comment">#a = [1,2,3,4], b = [1,2,3,4]</span></div></pre></td></tr></table></figure>
+<p>复制操作b=a，是浅拷贝，当b的值发生改变时，a的值也改变<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">c = [i <span class="keyword">for</span> i <span class="keyword">in</span> a]</div><div class="line">c.append(<span class="number">4</span>)   <span class="comment">#a = [1,2,3] c = [1,2,3,4]</span></div></pre></td></tr></table></figure></p>
+<p>上面的例子是深拷贝吗？<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</div><div class="line">d = [i <span class="keyword">for</span> i <span class="keyword">in</span> a]  <span class="comment"># 等同于 d = a[:]</span></div><div class="line">d[<span class="number">-1</span>].append(<span class="number">5</span>) <span class="comment">#a = [1,2,[3,4,5]] d = [1,2,[3,4,5]]</span></div></pre></td></tr></table></figure></p>
+<p>使用for循环操作时候，把a中的每个对象的引用拷贝，a中的前3个元素是字符串对象，在python中，字符串对象复制操作是：变量指向存放字符串的位置，实际上还是浅拷贝<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">25</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]]</div><div class="line"></div><div class="line">In [<span class="number">26</span>]: c = a[:]</div><div class="line"></div><div class="line">In [<span class="number">27</span>]: map(<span class="keyword">lambda</span> x:id(x),a)</div><div class="line">Out[<span class="number">27</span>]: [<span class="number">6580408L</span>, <span class="number">6580384L</span>, <span class="number">63220936L</span>]</div><div class="line"></div><div class="line">In [<span class="number">28</span>]: map(<span class="keyword">lambda</span> x:id(x),c)</div><div class="line">Out[<span class="number">28</span>]: [<span class="number">6580408L</span>, <span class="number">6580384L</span>, <span class="number">63220936L</span>]</div></pre></td></tr></table></figure></p>
+<p>可以看到a和c中每个对象的地址都是一样的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</div><div class="line">e = copy.deepcopy(a)</div><div class="line">e[<span class="number">-1</span>].append(<span class="number">5</span>)   <span class="comment"># a = [1,2,[3,4]] e = [1,2,[3,4,5]]</span></div></pre></td></tr></table></figure></p>
+<p>上面的例子就是深拷贝</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://book.douban.com/subject/25910544/" target="_blank" rel="external">编写高质量代码：改善Python程序的91个建议</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/08/python-note-1/" class="archive-article-date">
+  	<time datetime="2016-04-08T07:31:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/04/08/python-note-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python学习笔记（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/04/wildcard-char-regex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">通配符和正则表达式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python-note-1" data-title="Python学习笔记（一）" data-url="https://qiumy.github.io/2016/04/08/python-note-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

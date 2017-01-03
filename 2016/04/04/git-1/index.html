@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Git学习笔记 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git相关概念Git中的文件可能处于三个状态：已经提交(committed)、已经修改(modified)、已暂存(staged)。基本的Git的工作流程：
+
+在工作目录中修改文件
+暂存文件，将文件的快照放入暂存区域
+提交更新，站到暂存区域文件，将快照永久存储到Git仓库目录
+
+Git命令——配置相关12$ git config -- list       ##列出Git所有的配置信息$ git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git学习笔记">
+<meta property="og:url" content="https://qiumy.github.io/2016/04/04/git-1/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="Git相关概念Git中的文件可能处于三个状态：已经提交(committed)、已经修改(modified)、已暂存(staged)。基本的Git的工作流程：
+
+在工作目录中修改文件
+暂存文件，将文件的快照放入暂存区域
+提交更新，站到暂存区域文件，将快照永久存储到Git仓库目录
+
+Git命令——配置相关12$ git config -- list       ##列出Git所有的配置信息$ git">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git学习笔记">
+<meta name="twitter:description" content="Git相关概念Git中的文件可能处于三个状态：已经提交(committed)、已经修改(modified)、已暂存(staged)。基本的Git的工作流程：
+
+在工作目录中修改文件
+暂存文件，将文件的快照放入暂存区域
+提交更新，站到暂存区域文件，将快照永久存储到Git仓库目录
+
+Git命令——配置相关12$ git config -- list       ##列出Git所有的配置信息$ git">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-git-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git相关概念"><a href="#Git相关概念" class="headerlink" title="Git相关概念"></a>Git相关概念</h2><p>Git中的文件可能处于三个状态：已经提交(committed)、已经修改(modified)、已暂存(staged)。<br>基本的Git的工作流程：</p>
+<ol>
+<li>在工作目录中修改文件</li>
+<li>暂存文件，将文件的快照放入暂存区域</li>
+<li>提交更新，站到暂存区域文件，将快照永久存储到Git仓库目录</li>
+</ol>
+<h2 id="Git命令——配置相关"><a href="#Git命令——配置相关" class="headerlink" title="Git命令——配置相关"></a>Git命令——配置相关</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config -- list       ##列出Git所有的配置信息</div><div class="line">$ git config user.name     ##检查Git的某项配置</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Git命令——基础"><a href="#Git命令——基础" class="headerlink" title="Git命令——基础"></a>Git命令——基础</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#初始化仓库</span></div><div class="line"><span class="variable">$ </span>git init</div><div class="line"></div><div class="line"><span class="comment">#克隆仓库</span></div><div class="line"><span class="variable">$ </span>git clone [url]</div><div class="line"></div><div class="line"><span class="comment">#查看文件所处的状态</span></div><div class="line"><span class="variable">$ </span>git status</div><div class="line"></div><div class="line"><span class="comment">#将文件状态使用更紧凑的格式输出</span></div><div class="line"><span class="variable">$ </span>git status -s</div><div class="line"></div><div class="line"><span class="comment">#查看尚未暂存文件更新了什么部分</span></div><div class="line"><span class="variable">$ </span>git diff</div><div class="line"></div><div class="line"><span class="comment">#查看已暂存文件将要添加到下次提交的内容</span></div><div class="line"><span class="variable">$ </span>git diff --staged</div><div class="line"></div><div class="line"><span class="comment">#将提交信息和命令放在同一行</span></div><div class="line"><span class="variable">$ </span>git commit -m <span class="string">"commit message"</span> </div><div class="line"></div><div class="line"><span class="comment">#自动把所有已经跟踪过的文件暂存起来 一并提交，从而跳过 git add 步骤</span></div><div class="line"><span class="variable">$ </span>git commit -a -m <span class="string">"commit message"</span></div><div class="line"></div><div class="line"><span class="comment">#将文件从暂存区域移除，并从工作目录中删除指定文件</span></div><div class="line"><span class="variable">$ </span>git rm [filename]</div><div class="line"></div><div class="line"><span class="comment">#删除已经修改过并已经放到暂存区域的文件</span></div><div class="line"><span class="variable">$ </span>git rm -f [filename]</div><div class="line"></div><div class="line"><span class="comment">#将文件从暂存区移除，但保留在工作目录</span></div><div class="line"><span class="variable">$ </span>git rm --cached [filename]</div><div class="line">  </div><div class="line"><span class="comment">#删除log/目录下扩展名为.log的文件</span></div><div class="line"><span class="variable">$ </span>git rm log/\*.log  </div><div class="line"></div><div class="line"><span class="comment">#文件改名</span></div><div class="line"><span class="variable">$ </span>mv &lt;file_from&gt; &lt;file_to&gt;</div><div class="line"></div><div class="line"><span class="comment">#查看提交历史</span></div><div class="line"><span class="variable">$ </span>git log</div><div class="line"></div><div class="line"><span class="comment">#-p 显示提交内容的差异 -2显示近两次提交</span></div><div class="line"><span class="variable">$git</span> log -p -<span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">#最终只会有一个提交，第二次提交将代替第一次提交的结果</span></div><div class="line"><span class="variable">$ </span>git commit -m <span class="string">'initial commit'</span> </div><div class="line"><span class="variable">$ </span>git add forgotten_file </div><div class="line"><span class="variable">$ </span>git commit --amend</div><div class="line"></div><div class="line"><span class="comment">#取消暂存文件</span></div><div class="line"><span class="variable">$ </span>git reset HEAD &lt;file&gt;</div><div class="line"></div><div class="line"><span class="comment">#撤销对未暂存文件的修改</span></div><div class="line"><span class="variable">$ </span>git checkout -- &lt;filename&gt;</div></pre></td></tr></table></figure>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#添加远程仓库</span></div><div class="line">$ git remote add [remote-<span class="built_in">name</span>] [url]</div><div class="line"></div><div class="line"><span class="comment">#查看远程仓库</span></div><div class="line">$ git remote -v</div><div class="line"></div><div class="line"><span class="comment">#抓取克隆（或上一次抓取）后新推送的所有工作——不会自动合并或修改当前工作</span></div><div class="line">$ git fetch [remote-<span class="built_in">name</span>]</div><div class="line"><span class="comment">#自动抓取然后合并远程分支当当前分支</span></div><div class="line">$ git pull [remote-<span class="built_in">name</span>]</div><div class="line"></div><div class="line"><span class="comment">#推送到远程仓库</span></div><div class="line">$ git push [remote-<span class="built_in">name</span>] master</div><div class="line"></div><div class="line"><span class="comment">#查看远程仓库的更多信息</span></div><div class="line">$ git remote show [remote-<span class="built_in">name</span>]</div><div class="line"></div><div class="line"><span class="comment">#远程仓库的重命名</span></div><div class="line">$ git remote rename [<span class="keyword">from</span>-<span class="built_in">name</span>] [<span class="keyword">to</span>-<span class="built_in">name</span>]</div><div class="line"></div><div class="line"><span class="comment">#远程仓库的移除</span></div><div class="line">$ git remote rm [remote-<span class="built_in">name</span>]</div></pre></td></tr></table></figure>
+<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#创建分支</span></div><div class="line">$ git <span class="keyword">branch </span>[<span class="keyword">brach-name]</span></div><div class="line"></div><div class="line"><span class="comment">#切换分支</span></div><div class="line">$ git checkout [<span class="keyword">brach-name]</span></div><div class="line"></div><div class="line"><span class="comment">#新建分支并切换到那个分支上</span></div><div class="line">$ git checkout -<span class="keyword">b </span>[<span class="keyword">brach-name]</span></div><div class="line"></div><div class="line"><span class="comment">#删除分支</span></div><div class="line">$ git <span class="keyword">branch </span>-d [<span class="keyword">brach-name]</span></div></pre></td></tr></table></figure>
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><p>当我们有些文件无需纳入Git的管理时（例如一些日志文件或者编译中产生的临时文件），我们可以创建一个名为<code>.gitignore</code>的文件，列出要忽略的文件模式。一个实际的例子如下：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat .gitignore</div><div class="line">*.[oa]                   ##忽略所有以.o和.a结尾的文件</div><div class="line">*~                       ##忽略所有以波浪符(~)结尾的文件</div></pre></td></tr></table></figure></p>
+<p>文件<code>.gitignore</code>的格式规范如下：</p>
+<ul>
+<li>所有空行或者以 ＃ 开头的行都会被 Git 忽略。 </li>
+<li>可以使用标准的 glob 模式匹配。 </li>
+<li>匹配模式可以以（/）开头防止递归。 </li>
+<li>匹配模式可以以（/）结尾指定目录。 </li>
+<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取 反。</li>
+</ul>
+<p>例外一个<code>.gitignore</code>文件的例子<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># no .a files </span></div><div class="line">*.a</div><div class="line"><span class="comment"># but do track lib.a, even though you're ignoring .a files above </span></div><div class="line">!<span class="class"><span class="keyword">lib</span>.<span class="title">a</span></span></div><div class="line"><span class="comment"># only ignore the TODO file in the current directory, not subdir/TODO </span></div><div class="line">/TODO</div><div class="line"><span class="comment"># ignore all files in the build/ directory </span></div><div class="line">build/</div><div class="line"><span class="comment"># ignore doc/notes.txt, but not doc/server/arch.txt </span></div><div class="line">doc/*.txt</div><div class="line"><span class="comment"># ignore all .pdf files in the doc/ directory </span></div><div class="line">doc/**<span class="regexp">/*.pdf</span></div></pre></td></tr></table></figure></p>
+<h2 id="服务器上的Git"><a href="#服务器上的Git" class="headerlink" title="服务器上的Git"></a>服务器上的Git</h2><h3 id="Git用来传输资料的四种主要协议：本地协议、HTTP协议、SSH协议和Git协议。"><a href="#Git用来传输资料的四种主要协议：本地协议、HTTP协议、SSH协议和Git协议。" class="headerlink" title="Git用来传输资料的四种主要协议：本地协议、HTTP协议、SSH协议和Git协议。"></a>Git用来传输资料的四种主要协议：本地协议、HTTP协议、SSH协议和Git协议。</h3><ul>
+<li><p>本地协议：远程版本就是硬盘内的另一个目录</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">clone</span> <span class="title">file</span>://opt/git/project.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>HTTP协议</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">clone</span> <span class="title">https</span>://example.com/gitproject.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>SSH协议</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">clone</span> <span class="title">ssh</span>://user@server/project.git</div><div class="line">$ git <span class="keyword">clone</span> <span class="title">user</span>@server:project.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>Git协议<br>这是包含在 Git 里的一个特殊的守护进程；它监听在一个特定的端口（9418），类似于 SSH 服务，但是访问无需任何授权。</p>
+</li>
+</ul>
+<h2 id="分布式Git"><a href="#分布式Git" class="headerlink" title="分布式Git"></a>分布式Git</h2><p>集成管理者工作流程</p>
+<ol>
+<li>项目为辅着推送到主仓库</li>
+<li>贡献者克隆此仓库，做出修改</li>
+<li>贡献者将数据推送到自己的公开仓库</li>
+<li>贡献者给维护者发送邮件，请求拉取自己的更新</li>
+<li>维护者在自己本地的仓库中，将贡献者的仓库加为远程仓库并合并修改</li>
+<li>维护者将合并后的修改推送到主仓库</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">https://git-scm.com/book/zh/v2</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/04/git-1/" class="archive-article-date">
+  	<time datetime="2016-04-04T02:38:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/04/04/wildcard-char-regex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          通配符和正则表达式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/29/ascii-unicode-utf-8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ASCII Unicode UTF-8概念</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="git-1" data-title="Git学习笔记" data-url="https://qiumy.github.io/2016/04/04/git-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

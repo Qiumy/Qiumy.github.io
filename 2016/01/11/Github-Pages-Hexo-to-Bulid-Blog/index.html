@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Github Pages + Hexo to Bulid Blog | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、前言这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。使用github纯粹是因为课程需要，在大三下准备找实习的时候本来想着往前端方向发展，开始接触到各种大神搭建的独立博客，于是当时就很想自己弄一个玩玩，无奈当初自己太天真，而且不够毅力，也就不了了之。现在，也算是机缘巧合吧，让自己有机会体验一把。
+本文关注的主要是单纯使用GitHub Pages搭建自己独立博客的过程，并没有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github Pages + Hexo to Bulid Blog">
+<meta property="og:url" content="https://qiumy.github.io/2016/01/11/Github-Pages-Hexo-to-Bulid-Blog/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="一、前言这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。使用github纯粹是因为课程需要，在大三下准备找实习的时候本来想着往前端方向发展，开始接触到各种大神搭建的独立博客，于是当时就很想自己弄一个玩玩，无奈当初自己太天真，而且不够毅力，也就不了了之。现在，也算是机缘巧合吧，让自己有机会体验一把。
+本文关注的主要是单纯使用GitHub Pages搭建自己独立博客的过程，并没有">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github Pages + Hexo to Bulid Blog">
+<meta name="twitter:description" content="一、前言这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。使用github纯粹是因为课程需要，在大三下准备找实习的时候本来想着往前端方向发展，开始接触到各种大神搭建的独立博客，于是当时就很想自己弄一个玩玩，无奈当初自己太天真，而且不够毅力，也就不了了之。现在，也算是机缘巧合吧，让自己有机会体验一把。
+本文关注的主要是单纯使用GitHub Pages搭建自己独立博客的过程，并没有">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Github-Pages-Hexo-to-Bulid-Blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Github Pages + Hexo to Bulid Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。<br>使用github纯粹是因为课程需要，在大三下准备找实习的时候本来想着往前端方向发展，开始接触到各种大神搭建的独立博客，于是当时就很想自己弄一个玩玩，无奈当初自己太天真，而且不够毅力，也就不了了之。现在，也算是机缘巧合吧，让自己有机会体验一把。</p>
+<p>本文关注的主要是单纯使用GitHub Pages搭建自己独立博客的过程，并没有额外使用独立域名之类的（等以后真的弄了再补充吧）</p>
+<a id="more"></a>
+<p>知识基础：</p>
+<ul>
+<li><a href="http://git-scm.com/book/zh/v2" target="_blank" rel="external">Git</a></li>
+<li><a href="https://github.com/" target="_blank" rel="external">Github</a></li>
+<li><a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a></li>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a></li>
+<li><a href="http://www.appinn.com/markdown/#autoescape" target="_blank" rel="external">Markdown</a></li>
+</ul>
+<h2 id="二、准备环境"><a href="#二、准备环境" class="headerlink" title="二、准备环境"></a>二、准备环境</h2><h3 id="2-1-GitHub-Pages-仓库"><a href="#2-1-GitHub-Pages-仓库" class="headerlink" title="2.1 GitHub Pages 仓库"></a>2.1 GitHub Pages 仓库</h3><h4 id="2-1-1-创建Github仓库"><a href="#2-1-1-创建Github仓库" class="headerlink" title="2.1.1 创建Github仓库"></a>2.1.1 创建Github仓库</h4><p>在自己的GitHub账号下创建一个新的仓库，命名为username.github.io（username是你的账号名)。<br>附：GitHub Pages有两种类型：User/Organization Pages 和 Project Pages，而我所使用的是User Pages。<br>简单来说，User Pages 与 Project Pages的区别是：<br>User Pages 是用来展示用户的，而 Project Pages 是用来展示项目的。<br>用于存放 User Pages 的仓库必须使用username.github.io的命名规则，而 Project Pages 则没有特殊的要求。<br>User Pages 将使用仓库的 master 分支，而 Project Pages 将使用 gh-pages 分支。<br>User Pages 通过 http(s)://username.github.io 进行访问，而 Projects Pages通过 http(s)://username.github.io/projectname 进行访问</p>
+<h4 id="2-1-2-相关资料"><a href="#2-1-2-相关资料" class="headerlink" title="2.1.2 相关资料"></a>2.1.2 相关资料</h4><p><a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">User, Organization, and Project Pages</a></p>
+<h3 id="2-2-Git-安装"><a href="#2-2-Git-安装" class="headerlink" title="2.2 Git 安装"></a>2.2 Git 安装</h3><h4 id="2-2-1-安装Git"><a href="#2-2-1-安装Git" class="headerlink" title="2.2.1 安装Git"></a>2.2.1 安装Git</h4><p>Windows下安装git的方式可以参考：</p>
+<ol>
+<li><a href="http://git-scm.com/download/win" target="_blank" rel="external">Git官方版本安装</a></li>
+<li><a href="https://desktop.github.com/" target="_blank" rel="external">Github For Windows</a>(这里安装可能会不成功，具体可以自己查找相关的资料)</li>
+</ol>
+<h4 id="2-2-2-Git配置SSH-key"><a href="#2-2-2-Git配置SSH-key" class="headerlink" title="2.2.2 Git配置SSH key"></a>2.2.2 Git配置SSH key</h4><p>本地配置SSH keys，使用SSH keys验证Github的好处就是不用每次提交代码的时候都验证用户名和密码<br>1.<strong>检查本地是否已经存在SSH key</strong>。如果提示<code>No such file or directory</code> 说明不存在，继续第二步；否则，直接跳到第三步<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd ~/<span class="selector-class">.ssh</span> 检查本机的ssh密钥</div></pre></td></tr></table></figure></p>
+<p>2.<strong>生成新的SSH key</strong>。<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">"你的邮件地址"</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>输入命令后会出现<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter <span class="built_in">file</span> <span class="keyword">in</span> which <span class="built_in">to</span> save <span class="keyword">the</span> key (/your_home_path/.ssh/id_rsa):</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>意思是默认在相应路径下（/your_home_path）生成id_rsa和id_rsa.pub两个文件，直接回车确认就行。</p>
+<ul>
+<li>接着会出现<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> <span class="type">a </span>passphrase]</div><div class="line">Enter same passphrase again: [<span class="keyword">Type</span> <span class="type">passphrase </span>again]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>意思是设置passphrase，这个密码的作用在于进行版本控制时，每次与GitHub通信都会要求输入passphrase，以避免某些“失误”，如果没有这个安全需要，建议为空，直接回车确认。</p>
+<p>3.<strong>将SSH Key添加到GitHub中</strong>。<br>用你喜欢的方法打开id_rsa.pub文件，里面的内容就是SSH Key。登陆Github网站，点击Settings—-&gt;SSH keys —-&gt; Add SSH key。然后把文件中的内容复制到Key文本框里面，Title自定义。</p>
+<p>4.<strong>检查是否设置成功</strong>。输入命令：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh -T git<span class="variable">@github</span>.com</div></pre></td></tr></table></figure></p>
+<p>如果出现<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span> connecting (<span class="literal">yes</span>/<span class="literal">no</span>)?</div></pre></td></tr></table></figure></p>
+<p>不用紧张，直接输入yes就行，接着就会看到<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi username! You<span class="symbol">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</div></pre></td></tr></table></figure></p>
+<p>说明设置成功了～</p>
+<p>5.<strong>最后，设置一下用户信息</strong>。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user<span class="selector-class">.name</span> <span class="string">"username"</span><span class="comment">//Github用户名，不是昵称</span></div><div class="line">$ git config --global user<span class="selector-class">.email</span>  <span class="string">"username@gmail.com"</span><span class="comment">//自己的邮箱</span></div></pre></td></tr></table></figure></p>
+<p>就这样，我们就成功完成安装Git与配置SSH key了。</p>
+<h4 id="2-2-3-相关资料"><a href="#2-2-3-相关资料" class="headerlink" title="2.2.3 相关资料"></a>2.2.3 相关资料</h4><ul>
+<li><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys</a></li>
+</ul>
+<h3 id="2-3-Hexo"><a href="#2-3-Hexo" class="headerlink" title="2.3 Hexo"></a>2.3 Hexo</h3><h4 id="2-3-1-安装Hexo"><a href="#2-3-1-安装Hexo" class="headerlink" title="2.3.1 安装Hexo"></a>2.3.1 安装Hexo</h4><p>安装Hexo相当简单。在安装之前，必须检查电脑中是否已经安装下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="http://git-scm.com/" target="_blank" rel="external">Git</a><br>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-<span class="keyword">cli</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-3-2-使用Hexo建站"><a href="#2-3-2-使用Hexo建站" class="headerlink" title="2.3.2 使用Hexo建站"></a>2.3.2 使用Hexo建站</h4><p>安装完后，在你喜欢的文件夹内（例如D：\Hexo），点击鼠标右键选择Git bash，输入以下指令：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init</div></pre></td></tr></table></figure></p>
+<p>该命令会在目标文件夹内建立网站所需要的所有文件。接下来是安装依赖包：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span></div></pre></td></tr></table></figure></p>
+<p>这样，我们就已经搭建起本地的Hexo博客了。可以先执行以下命令（在对应文件夹下），然后再浏览器输入localhost:4000查看。<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">generate</span></div><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<p>这个博客只是本地的，别人是浏览不了的，之后需要部署到GitHub上。</p>
+<h4 id="2-3-3-相关资料"><a href="#2-3-3-相关资料" class="headerlink" title="2.3.3 相关资料"></a>2.3.3 相关资料</h4><ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo 官方文档</a></li>
+</ul>
+<h2 id="三、网站搭建"><a href="#三、网站搭建" class="headerlink" title="三、网站搭建"></a>三、网站搭建</h2><h3 id="3-1-使用默认的theme"><a href="#3-1-使用默认的theme" class="headerlink" title="3.1 使用默认的theme"></a>3.1 使用默认的theme</h3><p>我们继续使用上面的文件夹D:\Hexo（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml。<br>默认生成的_config.yml：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Deployment</span></div><div class="line"><span class="meta">## Docs: http:<span class="comment">//hexo.io/docs/deployment.html</span></span></div><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span></div></pre></td></tr></table></figure></p>
+<p>修改后的_config.yml：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="keyword">type</span>: git</div><div class="line">  repo: 对应仓库的SSH地址（可以在GitHub对应的仓库中复制）</div><div class="line">  branch: 分支（<span class="keyword">User</span> <span class="title">Pages</span>为<span class="literal">master</span>，Project Pages为gh-pages）</div></pre></td></tr></table></figure></p>
+<p>为了能够使Hexo部署到GitHub上，需要安装一个插件：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
+<p>然后，执行下列指令即可完成部署：<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo <span class="keyword">generate</span></div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
+<p>之后，可以通过在浏览器键入：username.github.io进行浏览</p>
+<h3 id="3-2-其他theme"><a href="#3-2-其他theme" class="headerlink" title="3.2 其他theme"></a>3.2 其他theme</h3><p>从Hexo的主题列表Hexo Themes中找到自己喜欢的主题。我选择了其中的Yilia，小清新的色调加上新颖的响应式布局，对我十分有吸引力。安装主题的方法就是一条简单的git命令，如下：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">clone</span> <span class="title">https</span>://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure></p>
+<h5 id="（使用git-clone命令后记得删除里面的-git文件夹，不然放在自己的博客仓库后再push到Github上会发现无法访问）"><a href="#（使用git-clone命令后记得删除里面的-git文件夹，不然放在自己的博客仓库后再push到Github上会发现无法访问）" class="headerlink" title="（使用git clone命令后记得删除里面的.git文件夹，不然放在自己的博客仓库后再push到Github上会发现无法访问）"></a>（使用git clone命令后记得删除里面的.git文件夹，不然放在自己的博客仓库后再push到Github上会发现无法访问）</h5><p>打开hexo/目录下的_config.yml文件，修改主题为Jacman<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http:<span class="comment">//hexo.io/plugins/</span></div><div class="line">## Themes: http:<span class="comment">//hexo.io/themes/</span></div><div class="line">theme: yilia</div></pre></td></tr></table></figure></p>
+<h3 id="3-3-常用Hexo命令"><a href="#3-3-常用Hexo命令" class="headerlink" title="3.3 常用Hexo命令"></a>3.3 常用Hexo命令</h3><p>常用的命令：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init <span class="comment">#初始化</span></div><div class="line"><span class="variable">$ </span>hexo new <span class="string">"name"</span> <span class="comment">#新建文章</span></div><div class="line"><span class="variable">$ </span>hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line"><span class="variable">$ </span>hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line"><span class="variable">$ </span>hexo deploy <span class="comment">#将.deploy_git目录部署到GitHub</span></div></pre></td></tr></table></figure></p>
+<p>常用的复合命令：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo deploy -g</div><div class="line"><span class="variable">$ </span>hexo server -g</div></pre></td></tr></table></figure></p>
+<p>命令的简写：<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo n == hexo <span class="keyword">new</span></div><div class="line">hexo g == hexo <span class="keyword">generate</span></div><div class="line">hexo s == hexo server</div><div class="line">hexo d == hexo deploy</div></pre></td></tr></table></figure></p>
+<h2 id="四、优化部署与管理"><a href="#四、优化部署与管理" class="headerlink" title="四、优化部署与管理"></a>四、优化部署与管理</h2><p>具体参照了网上的教程，利用Github分支对网站进行管理，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。请戳-&gt;<a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external">点我</a><br>在此也记录一下具体的搭建过程</p>
+<h3 id="4-1-搭建流程"><a href="#4-1-搭建流程" class="headerlink" title="4.1 搭建流程"></a>4.1 搭建流程</h3><ol>
+<li>创建远程仓库 Username.github.io</li>
+<li>初始化本地仓库Username.github.io，并关联远程仓库，进行git pull同步本地和远程仓库</li>
+<li>本地基于master创建hexo分支<code>git branch hexo master</code>,并进行第一次git push操作，同步完成后Github的仓库也有两个分支，分别为hexo分支和master分支，此时在Github上设置hexo为默认分支</li>
+<li>在本地Username.github.io文件夹下通过Git bash依次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;</li>
+<li>修改_config.yml中的deploy参数，设置的分支应为master；</li>
+<li>依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</li>
+<li>执行hexo generate -d生成网站并部署到GitHub上。</li>
+</ol>
+<h3 id="4-2-管理流程"><a href="#4-2-管理流程" class="headerlink" title="4.2 管理流程"></a>4.2 管理流程</h3><h4 id="4-2-1-在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理："><a href="#4-2-1-在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：" class="headerlink" title="4.2.1 在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理："></a>4.2.1 在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：</h4><ol>
+<li>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；</li>
+<li>执行hexo generate -d发布网站到master分支上。</li>
+</ol>
+<h4 id="4-2-2-本地资料丢失"><a href="#4-2-2-本地资料丢失" class="headerlink" title="4.2.2 本地资料丢失"></a>4.2.2 本地资料丢失</h4><p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
+<ol>
+<li>使用git clone git@github.com:Username/Username.github.io.git拷贝仓库（默认分支为hexo）；</li>
+<li>在本地新拷贝的Username.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
+</ol>
+<h3 id="4-3-相关资料"><a href="#4-3-相关资料" class="headerlink" title="4.3 相关资料"></a>4.3 相关资料</h3><ul>
+<li><a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external">CrazyMilk的博客</a></li>
+<li><a href="http://eleveneat.com/2015/04/24/Hexo-a-blog/#more" target="_blank" rel="external">eleveneat的博客</a></li>
+<li><a href="http://www.jianshu.com/p/73779eacb494" target="_blank" rel="external">Hexo 静态博客使用指南</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/01/11/Github-Pages-Hexo-to-Bulid-Blog/" class="archive-article-date">
+  	<time datetime="2016-01-11T06:59:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-01-11</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态博客/">静态博客</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/03/18/css-float-position/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSS学习笔记（一）之float和position
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Github-Pages-Hexo-to-Bulid-Blog" data-title="Github Pages + Hexo to Bulid Blog" data-url="https://qiumy.github.io/2016/01/11/Github-Pages-Hexo-to-Bulid-Blog/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

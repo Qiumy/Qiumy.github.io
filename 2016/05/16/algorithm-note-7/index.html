@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>算法导论笔记（七）—— Chap 10 基本数据结构 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本数据结构动态集合的元素：每个元素都有一个对象来表示，并可以假定对象中的一个属性为标识关键字。对象可能包含卫星数据。
+动态集合上的操作：简单返回有关集合信息的查询操作和改变集合的修改操作。一些标准的操作如下：search, insert, delete, minimum, maxinum, successor, predecessor。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论笔记（七）—— Chap 10 基本数据结构">
+<meta property="og:url" content="https://qiumy.github.io/2016/05/16/algorithm-note-7/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="基本数据结构动态集合的元素：每个元素都有一个对象来表示，并可以假定对象中的一个属性为标识关键字。对象可能包含卫星数据。
+动态集合上的操作：简单返回有关集合信息的查询操作和改变集合的修改操作。一些标准的操作如下：search, insert, delete, minimum, maxinum, successor, predecessor。">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法导论笔记（七）—— Chap 10 基本数据结构">
+<meta name="twitter:description" content="基本数据结构动态集合的元素：每个元素都有一个对象来表示，并可以假定对象中的一个属性为标识关键字。对象可能包含卫星数据。
+动态集合上的操作：简单返回有关集合信息的查询操作和改变集合的修改操作。一些标准的操作如下：search, insert, delete, minimum, maxinum, successor, predecessor。">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-algorithm-note-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法导论笔记（七）—— Chap 10 基本数据结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><p>动态集合的元素：每个元素都有一个对象来表示，并可以假定对象中的一个属性为标识关键字。对象可能包含卫星数据。</p>
+<p>动态集合上的操作：简单返回有关集合信息的查询操作和改变集合的修改操作。一些标准的操作如下：search, insert, delete, minimum, maxinum, successor, predecessor。</p>
+<a id="more"></a>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>栈实现的是一种后进先出的策略，被删除的是最近插入的元素。下面使用数组实现栈的结构。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, size = <span class="number">10</span>)</span>:</span></div><div class="line">		self.stack = []</div><div class="line">		self.size = size</div><div class="line">		self.top = <span class="number">-1</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">setSize</span><span class="params">(self, size)</span>:</span></div><div class="line">		self.size = size</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.top == <span class="number">-1</span>:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: stack is empty"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> self.stack[self.top]</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: stack is empty"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			self.top -= <span class="number">1</span></div><div class="line">			<span class="keyword">return</span> self.stack.pop()</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isFull</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.top+<span class="number">1</span> == self.size:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isFull():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: stack is full"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			self.top += <span class="number">1</span></div><div class="line">			self.stack.append(x)</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">print</span> self.stack</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	s = Stack(<span class="number">3</span>)</div><div class="line">	s.push(<span class="number">1</span>)</div><div class="line">	s.push(<span class="number">2</span>)</div><div class="line">	s.push(<span class="number">3</span>)</div><div class="line">	s.show()</div><div class="line">	s.pop()</div><div class="line">	s.show()</div><div class="line">	s.push(<span class="number">6</span>)</div><div class="line">	s.push(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>队列实现的是一种先进先出的策略：被删去的总是在集合中存在时间最长的那个元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, size=<span class="number">10</span>)</span>:</span></div><div class="line">		self.queue = []</div><div class="line">		self.size = size</div><div class="line">		self.head = <span class="number">0</span></div><div class="line">		self.tail = <span class="number">0</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">return</span> self.tail == <span class="number">0</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isFull</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> (self.tail - self.head) == self.size:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">frist</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: queue is empty"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> self.queue[self.head]</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">last</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: queue is empty"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			<span class="keyword">return</span> self.queue[self.tail<span class="number">-1</span>]</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, x)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isFull():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: queue is full"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			self.tail += <span class="number">1</span></div><div class="line">			self.queue.append(x)</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			<span class="keyword">print</span> <span class="string">"erroe: queue is empty"</span></div><div class="line">			<span class="keyword">return</span></div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			self.tail -= <span class="number">1</span></div><div class="line">			<span class="keyword">return</span> self.queue.pop(<span class="number">0</span>)</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">print</span> self.queue</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	q = Queue(<span class="number">3</span>)</div><div class="line">	q.enqueue(<span class="number">1</span>)</div><div class="line">	q.enqueue(<span class="number">2</span>)</div><div class="line">	q.enqueue(<span class="number">3</span>)</div><div class="line">	q.enqueue(<span class="number">4</span>)</div><div class="line">	q.show()</div><div class="line">	q.dequeue()</div><div class="line">	q.show()</div></pre></td></tr></table></figure>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表中各对象按照线性顺序排列，单向链表的每个元素包括next指针（指向下一个元素）和该元素关键字的值。此外，还有单向循环链表、双向链表和双向循环链表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></div><div class="line">		self.val = x</div><div class="line">		self.next = <span class="keyword">None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleLinkedList</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">		self._head = <span class="keyword">None</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">return</span> self._head == <span class="keyword">None</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">		cur = self._head</div><div class="line">		cnt = <span class="number">0</span></div><div class="line">		<span class="keyword">while</span> cur:</div><div class="line">			cnt += <span class="number">1</span></div><div class="line">			cur = cur.next</div><div class="line">		<span class="keyword">return</span> cnt</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, x)</span>:</span></div><div class="line">		<span class="string">'''</span></div><div class="line">		insert x before head</div><div class="line">		'''</div><div class="line">		tmp = ListNode(x)</div><div class="line">		tmp.next = self._head</div><div class="line">		self._head = tmp</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self, x)</span>:</span></div><div class="line">		<span class="string">'''</span></div><div class="line">		append x at the tail</div><div class="line">		'''</div><div class="line">		tmp = ListNode(x)</div><div class="line">		<span class="keyword">if</span> self.isEmpty():</div><div class="line">			self._head = tmp</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			cur = self._head</div><div class="line">			<span class="keyword">while</span> cur.next:</div><div class="line">				cur = cur.next</div><div class="line">			cur.next = tmp</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isFound</span><span class="params">(self, x)</span>:</span></div><div class="line">		cur = self._head</div><div class="line">		<span class="keyword">while</span> cur:</div><div class="line">			<span class="keyword">if</span> cur.val == x:</div><div class="line">				<span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">			cur = cur.next</div><div class="line">		<span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(self, x)</span>:</span></div><div class="line">		cur = self._head</div><div class="line">		cnt = <span class="number">0</span></div><div class="line">		<span class="keyword">while</span> cur:</div><div class="line">			<span class="keyword">if</span> cur.val == x:</div><div class="line">				<span class="keyword">return</span> cnt</div><div class="line">			cur = cur.next</div><div class="line">			cnt += <span class="number">1</span></div><div class="line">		<span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, x)</span>:</span></div><div class="line">		cur = self._head</div><div class="line">		pre = <span class="keyword">None</span></div><div class="line">		<span class="keyword">while</span> cur:</div><div class="line">			<span class="keyword">if</span> cur.val == x:</div><div class="line">				<span class="keyword">if</span> <span class="keyword">not</span> pre:</div><div class="line">					self._head = cur.next</div><div class="line">				<span class="keyword">else</span>:</div><div class="line">					pre.next = cur.next</div><div class="line">				<span class="keyword">break</span></div><div class="line">			<span class="keyword">else</span>:</div><div class="line">				pre = cur</div><div class="line">				cur = cur.next</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, pos, x)</span>:</span></div><div class="line">		<span class="keyword">if</span> pos == self.size():</div><div class="line">			self.append(x)</div><div class="line">		<span class="keyword">elif</span> pos &gt; self.size():</div><div class="line">			<span class="keyword">print</span> <span class="string">"error: pos is out of index"</span></div><div class="line">		<span class="keyword">elif</span> pos == <span class="number">0</span>:</div><div class="line">			self.add(x)</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			tmp = ListNode(x)</div><div class="line">			cnt = <span class="number">1</span></div><div class="line">			cur = self._head</div><div class="line">			<span class="keyword">while</span> cnt &lt; pos:</div><div class="line">				cur = cur.next</div><div class="line">				cnt += <span class="number">1</span></div><div class="line">			cur.next, tmp.next = tmp, cur.next</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(self)</span>:</span></div><div class="line">		cur = self._head</div><div class="line">		<span class="keyword">while</span> cur:</div><div class="line">			<span class="keyword">print</span> cur.val,</div><div class="line">			cur = cur.next</div><div class="line">		<span class="keyword">print</span></div></pre></td></tr></table></figure>
+<h2 id="指针和对象的实现"><a href="#指针和对象的实现" class="headerlink" title="指针和对象的实现"></a>指针和对象的实现</h2><ul>
+<li>对象的多数组表示。以双向链表为例，分别使用三个数组存放next, prev, key，对于给定数组下标x，三个数组项next[x], prev[x], key[x]一起表示链表中的一个对象。此外还需要另一个变量存放表头元素的下标。</li>
+<li>对象的单数组表示。一个对象占用一段连续的子数组nums[j..k]，对象中的每个属性对应于从0到j-k之间的一个偏移量，指向该对象的指针就是下标j。以双向链表为例，对象具有的属性key, next, prev，则可以设置对应的偏移量为0, 1, 2。（在上面的例子中，如果指向某个对象的指针为下标x，则指向下一个对象的指针为下标x+3）</li>
+</ul>
+<h2 id="对象的分配和释放"><a href="#对象的分配和释放" class="headerlink" title="对象的分配和释放"></a>对象的分配和释放</h2><p>略</p>
+<h2 id="有根树的表示"><a href="#有根树的表示" class="headerlink" title="有根树的表示"></a>有根树的表示</h2><ul>
+<li>二叉树：属性p, left, right存放指向父节点、左孩子、右孩子的指针。</li>
+<li>分支无限制的有根树：左孩子右兄弟表示法。x.left-child, x.right-sibling分别指向结点x最左边的孩子结点和x右侧相邻的兄弟结点。</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/16/algorithm-note-7/" class="archive-article-date">
+  	<time datetime="2016-05-16T02:10:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法导论/">算法导论</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/01/03/openstack-keystone/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CentOS7安装Openstack【Keystone篇】
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/11/algorithm-note-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法导论笔记（六）—— Chap 9 顺序统计量</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="algorithm-note-7" data-title="算法导论笔记（七）—— Chap 10 基本数据结构" data-url="https://qiumy.github.io/2016/05/16/algorithm-note-7/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

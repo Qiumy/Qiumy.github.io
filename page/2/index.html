@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Slurm's blog">
+<meta property="og:url" content="https://qiumy.github.io/page/2/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Slurm's blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-algorithm-note-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/08/algorithm-note-3/">算法导论笔记（三）—— Chap 6 堆排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>二叉堆是一个数组，近似的完全二叉树，给定结点的下标i，容易获得其父节点、左孩子、有孩子的下标。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def parent(i):</div><div class="line">	return (i-1)/2</div><div class="line">def left(i):</div><div class="line">	return 2*i+1</div><div class="line">def right(i):</div><div class="line">	return 2*(i+1)</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/05/08/algorithm-note-3/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/08/algorithm-note-3/" class="archive-article-date">
+  	<time datetime="2016-05-08T01:56:44.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法导论/">算法导论</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm-note-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/05/algorithm-note-2/">算法导论笔记（二）—— Chap 4 分治策略</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h1><h2 id="最大子数组"><a href="#最大子数组" class="headerlink" title="最大子数组"></a>最大子数组</h2><p>问题：给定数组A，寻找A的和最大的非空连续子数组</p>
+<ul>
+<li>O(n^2)解法：A的子数组的个数共有n+n-1+n-2+….+2+1 = n(n+1)/2个。对于每个数组求和，并记录最大值，sum(A[i…j]) = sum(A[i…j-1]) + A[j]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_subarray1</span><span class="params">(nums)</span>:</span></div><div class="line">	max_sum = min(nums)</div><div class="line">	left_idx, right_idx = <span class="number">0</span>, len(nums)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(nums)):</div><div class="line">			tmp_sum = <span class="number">0</span></div><div class="line">			<span class="keyword">for</span> k <span class="keyword">in</span> range(i, j+<span class="number">1</span>):</div><div class="line">				tmp_sum += nums[k]</div><div class="line">			<span class="keyword">if</span> tmp_sum &gt; max_sum:</div><div class="line">				max_sum = tmp_sum</div><div class="line">				left_idx = i</div><div class="line">				right_idx = j</div><div class="line">	<span class="keyword">return</span> (left_idx, right_idx, max_sum)</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/05/05/algorithm-note-2/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/05/algorithm-note-2/" class="archive-article-date">
+  	<time datetime="2016-05-05T15:07:54.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-05</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法导论/">算法导论</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm-note-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/03/algorithm-note-1/">算法导论笔记（一）—— Chap 2 算法基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第2章-算法基础"><a href="#第2章-算法基础" class="headerlink" title="第2章 算法基础"></a>第2章 算法基础</h1><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 升序排列</span></div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort1</span><span class="params">(nums)</span>:</span></div><div class="line">	<span class="string">'''</div><div class="line">	:type nums: List</div><div class="line">	:rtype: List</div><div class="line">	'''</span></div><div class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</div><div class="line">		key = nums[j]</div><div class="line">		i = j<span class="number">-1</span></div><div class="line">		<span class="keyword">while</span> i&gt;=<span class="number">0</span> <span class="keyword">and</span> nums[i] &gt; key:</div><div class="line">			nums[i+<span class="number">1</span>] = nums[i]</div><div class="line">			i = i - <span class="number">1</span></div><div class="line">		nums[i+<span class="number">1</span>] = key</div><div class="line">	<span class="keyword">return</span> nums</div><div class="line"></div><div class="line"><span class="comment"># 降序排列</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort2</span><span class="params">(nums)</span>:</span></div><div class="line">	<span class="string">'''</div><div class="line">	:type nums: List</div><div class="line">	:rtype: List</div><div class="line">	'''</span></div><div class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</div><div class="line">		key = nums[j]</div><div class="line">		i = j<span class="number">-1</span></div><div class="line">		<span class="keyword">while</span> i&gt;=<span class="number">0</span> <span class="keyword">and</span> nums[i] &lt; key:</div><div class="line">			nums[i+<span class="number">1</span>] = nums[i]</div><div class="line">			i = i - <span class="number">1</span></div><div class="line">		nums[i+<span class="number">1</span>] = key</div><div class="line">	<span class="keyword">return</span> nums</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	nums = [random.randint(<span class="number">0</span>,<span class="number">99</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line">	<span class="keyword">print</span> nums</div><div class="line">	<span class="keyword">print</span> insertion_sort1(nums)</div><div class="line">	<span class="keyword">print</span> insertion_sort2(nums)</div></pre></td></tr></table></figure>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/05/03/algorithm-note-1/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/03/algorithm-note-1/" class="archive-article-date">
+  	<time datetime="2016-05-03T12:03:04.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法导论/">算法导论</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-shell-note-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/01/shell-note-1/">Shell学习笔记(一)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本的bash-shell命令"><a href="#基本的bash-shell命令" class="headerlink" title="基本的bash shell命令"></a>基本的bash shell命令</h1><h2 id="常见Linux目录名称"><a href="#常见Linux目录名称" class="headerlink" title="常见Linux目录名称"></a>常见Linux目录名称</h2><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>虚拟目录的根目录</td>
+</tr>
+<tr>
+<td>/bin</td>
+<td>二进制目录，存放许多GUN用户级的工具</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>启动目录，存放启动文件</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>设备目录，Linux在这里创建用户目录</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>系统配置文件目录</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>主目录，Linux在这里创建用户目录</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>库目录，存放系统和应用程序的库文件</td>
+</tr>
+<tr>
+<td>/media</td>
+<td>媒体目录，存放可移动媒体设备挂载点的地方</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>挂载目录，另一个存放可移动设备挂载点的地方</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>可选目录，用于存放可选的软件包</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>根主目录</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>系统二进制目录，存放许多GUN管理员级工具</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时目录，可以在该目录中创建和删除临时文件</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>用户安装软件的目录</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>可变目录，用以存放经常变化的文件，比如日志文件</td>
+</tr>
+</tbody>
+</table>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/05/01/shell-note-1/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/01/shell-note-1/" class="archive-article-date">
+  	<time datetime="2016-05-01T02:21:56.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-map-reduce-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/14/map-reduce-python/">Python函数——map()和reduce()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a><code>map()</code>函数</h1><p><code>map()</code>函数接收两个参数，一个是函数，另外一个是迭代器，<code>map</code>的作用就是将传入的函数一次作用到序列的每个元素，并把结果作为新的迭代器返回。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用map</span></div><div class="line"><span class="keyword">print</span> map(<span class="keyword">lambda</span> x:x%<span class="number">3</span>,range(<span class="number">6</span>))              <span class="comment"># [0,1,2,0,1,2]</span></div><div class="line"><span class="comment"># 使用列表解析</span></div><div class="line"><span class="keyword">print</span> [x%<span class="number">3</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">6</span>)]                 <span class="comment"># [0,1,2,0,1,2]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 将字符串转成list</span></div><div class="line"><span class="keyword">print</span> map(str, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>])   <span class="comment"># ['1', '2', '3', '4', '5', '6', '7', '8', '9']</span></div><div class="line"></div><div class="line"><span class="comment"># 多个迭代器</span></div><div class="line"><span class="keyword">print</span> map(<span class="keyword">lambda</span> x,y: x*y,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])    <span class="comment"># [4,10,18]</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> map(<span class="keyword">lambda</span> x,y: (x*y, x+y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>] )  <span class="comment"># [(4, 5), (10, 7), (18, 9)]</span></div></pre></td></tr></table></figure></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/04/14/map-reduce-python/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/14/map-reduce-python/" class="archive-article-date">
+  	<time datetime="2016-04-14T11:56:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

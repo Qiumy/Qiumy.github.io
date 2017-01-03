@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>通配符和正则表达式 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="通配符在某些命令中，使用通配符创建一个模式匹配表达是，指定多个对象。使用的通配符取决于发出命令时所处于的操作系统。例如可使用通配符（例如星号*）匹配任意个字符，或者可使用问号（？）或者百分号（%）精确匹配一个字符。
+正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。正则表达式的用处：1）验证字符串是否符合指定特征 2）用来查找字符串，从一个长的文本中查找符合指定特征的字符串 3）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通配符和正则表达式">
+<meta property="og:url" content="https://qiumy.github.io/2016/04/04/wildcard-char-regex/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="通配符在某些命令中，使用通配符创建一个模式匹配表达是，指定多个对象。使用的通配符取决于发出命令时所处于的操作系统。例如可使用通配符（例如星号*）匹配任意个字符，或者可使用问号（？）或者百分号（%）精确匹配一个字符。
+正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。正则表达式的用处：1）验证字符串是否符合指定特征 2）用来查找字符串，从一个长的文本中查找符合指定特征的字符串 3）">
+<meta property="og:updated_time" content="2017-01-03T08:55:46.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通配符和正则表达式">
+<meta name="twitter:description" content="通配符在某些命令中，使用通配符创建一个模式匹配表达是，指定多个对象。使用的通配符取决于发出命令时所处于的操作系统。例如可使用通配符（例如星号*）匹配任意个字符，或者可使用问号（？）或者百分号（%）精确匹配一个字符。
+正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。正则表达式的用处：1）验证字符串是否符合指定特征 2）用来查找字符串，从一个长的文本中查找符合指定特征的字符串 3）">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-wildcard-char-regex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通配符和正则表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><p>在某些命令中，使用通配符创建一个模式匹配表达是，指定多个对象。使用的通配符取决于发出命令时所处于的操作系统。<br>例如可使用通配符（例如星号*）匹配任意个字符，或者可使用问号（？）或者百分号（%）精确匹配一个字符。</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。正则表达式的用处：1）验证字符串是否符合指定特征 2）用来查找字符串，从一个长的文本中查找符合指定特征的字符串 3）用来替换</p>
+<a id="more"></a>
+<h2 id="JavaScript中的正则表达式"><a href="#JavaScript中的正则表达式" class="headerlink" title="JavaScript中的正则表达式"></a>JavaScript中的正则表达式</h2><h3 id="创建一个正则表达式"><a href="#创建一个正则表达式" class="headerlink" title="创建一个正则表达式"></a>创建一个正则表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/ab+c/</span></div><div class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"ab+c"</span>)</div></pre></td></tr></table></figure>
+<h3 id="编写一个正则表达式的模式"><a href="#编写一个正则表达式的模式" class="headerlink" title="编写一个正则表达式的模式"></a>编写一个正则表达式的模式</h3><ul>
+<li>简单模式<br>有你找的直接匹配所构成。例如<code>/abc/</code>这个模式匹配了在一个字符串中，仅字符’abc’同时出现并按照这个顺序</li>
+<li>使用特殊字符<br>搜素一个比直接匹配需要更多条件的匹配。例如<code>/ab*c/</code>匹配了一个单独的’a’后面跟了零个或者多个b，且后面跟着’c’的任何字符的组合</li>
+<li>使用插入语<br>任何使用正则表达是的插入语都会使这部分匹配的副字符串被记忆。一旦被记忆，这个副字符就可以被调用于其他用途。比如，<code>/Chapter (\d+)\.\d*/</code>解释了额外转义的和特殊的字符，并说明了这部分pattern应该被记忆。它精确地匹配后面跟着一个以上数字字符的字符 ‘Chapter ‘  (\d 意为任何数字字符，+意为1次以上)，跟着一个小数点（在这个字符中本身也是一个特殊字符；小数点前的 \ 意味着这个pattern必须寻找字面字符’.’)，跟着任何数字字符0次以上。 (\d 意为数字字符， * 意为0次以上)。另外，插入语也用来记忆第一个匹配的数字字符。<h3 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h3>使用正则表达式的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec</td>
+<td>一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null）。</td>
+</tr>
+<tr>
+<td>test</td>
+<td>一个在字符串中测试是否匹配的RegExp方法，它返回true或false。</td>
+</tr>
+<tr>
+<td>match</td>
+<td>一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。</td>
+</tr>
+<tr>
+<td>search</td>
+<td>一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。</td>
+</tr>
+<tr>
+<td>split</td>
+<td>一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的String方法。</td>
+</tr>
+</tbody>
+</table>
+<p>例如，使用exec查找一个匹配<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myRe = <span class="regexp">/d(b+)d/g</span>;</div><div class="line"><span class="keyword">var</span> myArray = myRe.exec(<span class="string">"cdbbdbsbz"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> myRe = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"d(b+)d"</span>, <span class="string">"g"</span>);</div><div class="line"><span class="keyword">var</span> myArray = myRe.exec(<span class="string">"cdbbdbsbz"</span>);</div></pre></td></tr></table></figure></p>
+<p>另外一个例子，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myRe = <span class="regexp">/d(b+)d/g</span>;</div><div class="line"><span class="keyword">var</span> myArray = myRe.exec(<span class="string">"cdbbdbsbz"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"The value of lastIndex is "</span> + myRe.lastIndex);</div><div class="line"><span class="comment">//The value of lastIndex is 5</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> myArray = <span class="regexp">/d(b+)d/g</span>.exec(<span class="string">"cdbbdbsbz"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"The value of lastIndex is "</span> + <span class="regexp">/d(b+)d/g</span>.lastIndex);</div><div class="line"><span class="comment">//The value of lastIndex is 0</span></div></pre></td></tr></table></figure></p>
+<h4 id="使用括号的字符串匹配"><a href="#使用括号的字符串匹配" class="headerlink" title="使用括号的字符串匹配"></a>使用括号的字符串匹配</h4><p>使用括号匹配的子字符串的数量是无限的。返回的数组中保存所有被发现的子匹配。<br>下面的脚本使用replace()方法来转换字符串中的单词。在匹配到的替换文本中，脚本使用替代的$1,$2表示第一个和第二个括号的子字符串匹配。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/(\w+)\s(\w+)/</span>;</div><div class="line"><span class="keyword">var</span> str = <span class="string">"John Smith"</span>;</div><div class="line"><span class="keyword">var</span> newstr = str.replace(re,<span class="string">"$2, $1"</span>);</div><div class="line"><span class="built_in">console</span>.log(newstr);</div><div class="line"><span class="comment">// Simth John</span></div></pre></td></tr></table></figure></p>
+<h4 id="使用标志进行高级搜索"><a href="#使用标志进行高级搜索" class="headerlink" title="使用标志进行高级搜索"></a>使用标志进行高级搜索</h4><p>正则表达式标志</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g</td>
+<td>全局搜索</td>
+</tr>
+<tr>
+<td>i</td>
+<td>不区分大小写搜索</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行搜索</td>
+</tr>
+<tr>
+<td>y</td>
+<td>执行“粘贴”搜索，匹配从目标字符串的当前位置，可以使用y标志</td>
+</tr>
+</tbody>
+</table>
+<p>例如，re = /\w+\s/g 将创建一个查找一个或多个字符后有一个空格的正则表达式，或者组合起来像此要求的字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/\w+\s/g</span>;</div><div class="line"><span class="comment">// var re = new RegExp("\\w+\\s","g");</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">"fee fi fo fum"</span>;</div><div class="line"><span class="keyword">var</span> myArray = str.match(re);</div><div class="line"><span class="built_in">console</span>.log(myArray);</div><div class="line"><span class="comment">//["fee","fi","fo"]</span></div></pre></td></tr></table></figure></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#使用特殊字符" target="_blank" rel="external">正则表达式</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/04/wildcard-char-regex/" class="archive-article-date">
+  	<time datetime="2016-04-04T12:06:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/通配符/">通配符</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/04/08/python-note-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python学习笔记（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/04/git-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="wildcard-char-regex" data-title="通配符和正则表达式" data-url="https://qiumy.github.io/2016/04/04/wildcard-char-regex/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 10px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
