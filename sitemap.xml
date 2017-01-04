@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qiumy.github.io/2017/01/04/openstack-swift/</loc>
+    
+    <lastmod>2017-01-04T01:33:13.921Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qiumy.github.io/2017/01/03/openstack-keystone/</loc>
     
     <lastmod>2017-01-03T12:31:53.935Z</lastmod>

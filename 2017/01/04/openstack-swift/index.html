@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>CentOS7安装Openstack【Swift篇】 | Slurm&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文主要关注与OpenStack对象存储的安装
+控制节点
+基础配置
+关闭selinux、防火墙
+设置时间同步
+配置swift文件
+123# vi /etc/swift/swift.conf[swift-hash]swift_hash_path_suffix = `od -t x8 -N 8 -A n &amp;lt;/dev/random`
+
+配置日志
+
+创建swift日志配置文件
+12# vi /etc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安装Openstack【Swift篇】">
+<meta property="og:url" content="https://qiumy.github.io/2017/01/04/openstack-swift/index.html">
+<meta property="og:site_name" content="Slurm's blog">
+<meta property="og:description" content="本文主要关注与OpenStack对象存储的安装
+控制节点
+基础配置
+关闭selinux、防火墙
+设置时间同步
+配置swift文件
+123# vi /etc/swift/swift.conf[swift-hash]swift_hash_path_suffix = `od -t x8 -N 8 -A n &amp;lt;/dev/random`
+
+配置日志
+
+创建swift日志配置文件
+12# vi /etc">
+<meta property="og:updated_time" content="2017-01-04T01:33:13.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS7安装Openstack【Swift篇】">
+<meta name="twitter:description" content="本文主要关注与OpenStack对象存储的安装
+控制节点
+基础配置
+关闭selinux、防火墙
+设置时间同步
+配置swift文件
+123# vi /etc/swift/swift.conf[swift-hash]swift_hash_path_suffix = `od -t x8 -N 8 -A n &amp;lt;/dev/random`
+
+配置日志
+
+创建swift日志配置文件
+12# vi /etc">
+  
+    <link rel="alternative" href="/atom.xml" title="Slurm&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Slurm</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">不想码代码的程序媛</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+				<li><a href="/FE-Angles/">FE练习</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+		        
+					<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Slurm</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/avatar/avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Slurm</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">不想码代码的程序媛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
+					<li><a href="/FE-Angles/">FE练习</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Qiumy" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/slurm/" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:qiumy3@mail2.sysu.edu.cn" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-openstack-swift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS7安装Openstack【Swift篇】
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要关注与OpenStack对象存储的安装</p>
+<h1 id="控制节点"><a href="#控制节点" class="headerlink" title="控制节点"></a>控制节点</h1><ul>
+<li><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li>关闭selinux、防火墙</li>
+<li>设置时间同步</li>
+<li><p>配置swift文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># vi /etc/swift/swift.conf</div><div class="line">[swift-hash]</div><div class="line">swift_hash_path_suffix = `od -t x8 -N 8 -A n &lt;/dev/random`</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置日志</p>
+<ul>
+<li><p>创建swift日志配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># vi /etc/rsyslog.d/10-swift.conf</div><div class="line">local0.* /var/log/swift/proxy.log</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建日志目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># mkdir -p /var/log/swift</div><div class="line"># chown -R swift:swift /var/log/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启日志服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rsyslog restart</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><h2 id="创建身份认证服务"><a href="#创建身份认证服务" class="headerlink" title="创建身份认证服务"></a>创建身份认证服务</h2><ul>
+<li>生效环境变量<code>admin-openrc.sh</code> 参见<a href="https://qiumy.github.io/2017/01/03/openstack-keystone/">CentOS7安装Openstack【Keystone篇】</a></li>
+<li><p>创建swift用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone user-create --name swift --pass SWIFT_PASS</div></pre></td></tr></table></figure>
+</li>
+<li><p>授予admin角色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keystone user-role-add --user swift --tenant service --role admin</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建swift 服务实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">keystone service-create --name swift --type object-store \</div><div class="line">--description &quot;OpenStack Object Storage&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建对象服务API endpoints</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">keystone endpoint-create \</div><div class="line">--service-id $(keystone service-list | awk &apos;/ object-store / &#123;print $2&#125;&apos;) \</div><div class="line">--publicurl &apos;http://controller:8080/v1/AUTH_%(tenant_id)s&apos; \</div><div class="line">--internalurl &apos;http://controller:8080/v1/AUTH_%(tenant_id)s&apos; \</div><div class="line">--adminurl http://controller:8080 \</div><div class="line">--region regionOne</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h2 id="安装配置控制节点组件"><a href="#安装配置控制节点组件" class="headerlink" title="安装配置控制节点组件"></a>安装配置控制节点组件</h2><ul>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install swift swift-proxy python-swiftclient python-keystoneclient python-keystonemiddleware memcached</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建/etc/swift 目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir /etc/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p>复制获取代理服务配置文件sample，创建<code>\etc\swift\proxy-server.conf</code> <a href="https://github.com/openstack/swift/blob/master/etc/proxy-server.conf-sample" target="_blank" rel="external">proxy-server.conf-sample</a></p>
+<ul>
+<li><p><code>[DEFAULT]</code>部分，配置绑定的端口，用户和配置目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line">...</div><div class="line">bind_port = 8080</div><div class="line">user = swift</div><div class="line">swift_dir = /etc/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[pipeline:main]</code>部分，启动合适的modules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[pipeline:main]</div><div class="line">pipeline = authtoken cache healthcheck keystoneauth proxy-logging proxy-server</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[app:proxy-server]</code>部分，启动账户管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[app:proxy-server]</div><div class="line">...</div><div class="line">allow_account_management = true</div><div class="line">account_autocreate = true</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[filter:keystoneauth]</code>部分，配置操作的角色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[filter:keystoneauth]</div><div class="line">use = egg:swift#keystoneauth</div><div class="line">...</div><div class="line">operator_roles = admin,_member_</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[filter:authtoken]</code>部分，配置身份认证访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[filter:authtoken]</div><div class="line">paste.filter_factory = keystonemiddleware.auth_token:filter_factory</div><div class="line">...</div><div class="line">auth_uri = http://controller:5000/v2.0</div><div class="line">identity_uri = http://controller:35357</div><div class="line">admin_tenant_name = service</div><div class="line">admin_user = swift</div><div class="line">admin_password = SWIFT_PASS</div><div class="line">delay_auth_decision = true</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[filter:cache]</code>部分，配置memcached 位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[filter:cache]</div><div class="line">...</div><div class="line">memcache_servers = 127.0.0.1:11211</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="配置Ring"><a href="#配置Ring" class="headerlink" title="配置Ring"></a>配置Ring</h2><ul>
+<li>进入<code>/etc/swift</code>目录</li>
+<li><p>创建Ring</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># swift-ring-builder account.builder create 10 3 1</div><div class="line"># swift-ring-builder container.builder create 10 3 1</div><div class="line"># swift-ring-builder object.builder create 10 3 1</div></pre></td></tr></table></figure>
+</li>
+<li><p>向环里添加存储设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># swift-ring-builder account.builder add r1z1-172.18.216.188:6002/sdb1 100</div><div class="line"># swift-ring-builder account.builder add r1z1-172.18.216.33:6002/sdb1 100</div><div class="line"># swift-ring-builder account.builder add r1z2-172.18.216.38:6002/sdb1 200</div><div class="line"># swift-ring-builder container.builder add r1z1-172.18.216.188:6001/sdb1 100</div><div class="line"># swift-ring-builder container.builder add r1z1-172.18.216.33:6001/sdb1 100</div><div class="line"># swift-ring-builder container.builder add r1z2-172.18.216.38:6001/sdb1 200</div><div class="line"># swift-ring-builder object.builder add r1z1-172.18.216.188:6000/sdb1 100</div><div class="line"># swift-ring-builder object.builder add r1z1-172.18.216.33:6000/sdb1 100</div><div class="line"># swift-ring-builder object.builder add r1z2-172.18.216.38:6000/sdb1 200</div></pre></td></tr></table></figure>
+</li>
+<li><p>平衡环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># swift-ring-builder account.builder rebalance</div><div class="line"># swift-ring-builder container.builder rebalance</div><div class="line"># swift-ring-builder object.builder rebalance</div></pre></td></tr></table></figure>
+<p>PS:这三条命令会产生以gz结尾的文件,gz文件是所有节点要用到的环文件，可以用scp拷贝到其它各节点</p>
+</li>
+</ul>
+</li>
+<li><h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><ul>
+<li><p>创建cache目录，设置权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># mkdir -p /var/cache/swift</div><div class="line"># chown -R swift:swift /var/cache/swift/</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置/etc/swift目录权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># chown -R swift:swift /etc/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># service memcached start</div><div class="line"># chkconfig memcached on</div><div class="line"># swift-init proxy start</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="存储节点"><a href="#存储节点" class="headerlink" title="存储节点"></a>存储节点</h1><ul>
+<li><h2 id="基础配置-1"><a href="#基础配置-1" class="headerlink" title="基础配置"></a>基础配置</h2><ul>
+<li>关闭selinux、防火墙</li>
+<li>设置时间同步</li>
+</ul>
+</li>
+<li><h2 id="安装配置存储节点组件"><a href="#安装配置存储节点组件" class="headerlink" title="安装配置存储节点组件"></a>安装配置存储节点组件</h2><ul>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># yum install –y python-setuptools xinetd xfsprogs</div><div class="line"># yum install -y openstack-swift-account openstack-swift-container openstack-swift-object rsync</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置存储</p>
+<ul>
+<li>创建/dev/sdb1分区，过程省略</li>
+<li><p>格式化磁盘为xfs格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mkfs.xfs -i size=1024 /dev/sdb1</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加开机自启动项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># echo &quot;/dev/sdb1 /swift/node1 xfs loop,noatime,nodiratime,nobarrier,logbufs=8 0 0&quot; &gt;&gt; /etc/fstab</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建挂载目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mkdir -p /swift/node1</div></pre></td></tr></table></figure>
+</li>
+<li><p>挂载磁盘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mount /swift/node1</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置目录权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># chown -R swift:swift /swift</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>配置<code>swift.conf</code>文件, 从代理节点拷贝过来即可，使用scp命令</p>
+</li>
+<li><p>配置rsync,创建<code>/etc/rsync.conf</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># vi /etc/rsync.conf</div><div class="line">uid = swift</div><div class="line">gid = swift</div><div class="line">log file = /var/log/rsyncd.log</div><div class="line">pid file = /var/run/rsyncd.pid</div><div class="line">address = 127.0.0.1</div><div class="line">[account]</div><div class="line">max connections = 2</div><div class="line">path = /swift/node1</div><div class="line">read only = false</div><div class="line">lock file = /var/lock/account.lock</div><div class="line">[container]</div><div class="line">max connections = 2</div><div class="line">path = /swift/node1</div><div class="line">read only = false</div><div class="line">lock file = /var/lock/container.lock</div><div class="line">[object]</div><div class="line">max connections = 2</div><div class="line">path = /swift/node1</div><div class="line">read only = false</div><div class="line">lock file = /var/lock/object.lock</div></pre></td></tr></table></figure>
+<p>启用rsync</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sed -i &apos;s/yes/no/&apos; /etc/xinetd.d/rsync</div><div class="line"># sed -i &apos;s/IPv6/IPv4/&apos; /etc/xinetd.d/rsync</div></pre></td></tr></table></figure>
+<p>启动xinetd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># service xinetd start</div><div class="line"># chkconfig xinetd on</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h2 id="配置存储服务"><a href="#配置存储服务" class="headerlink" title="配置存储服务"></a>配置存储服务</h2><ul>
+<li><p>配置account服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line">bind_ip = 172.18.216.188</div><div class="line">bind_port = 6002</div><div class="line">user = swift</div><div class="line">swift_dir = /etc/swift</div><div class="line">devices = /swift/node1</div><div class="line">mount_check = false</div><div class="line">[pipeline:main]</div><div class="line">pipeline = healthcheck recon account-server</div><div class="line">[app:account-server]</div><div class="line">use = egg:swift#account</div><div class="line">#recon_cache_spath = /var/cache/swift</div><div class="line">[account-replicator]</div><div class="line">vm_test_node=no</div><div class="line">[account-auditor]</div><div class="line">[account-reaper]</div><div class="line">[filter:recon]</div><div class="line">use = egg:swift#recon</div><div class="line">recon_cache_path = /var/cache/swift</div><div class="line">[filter:healthcheck]</div><div class="line">use = egg:swift#healthcheck</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置container服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line">bind_ip = 172.18.216.188</div><div class="line">bind_port = 6001</div><div class="line">user = swift</div><div class="line">swift_dir = /etc/swift</div><div class="line">devices = /swift/node1</div><div class="line">mount_check = false</div><div class="line">[pipeline:main]</div><div class="line">pipeline = healthcheck recon container-server</div><div class="line">[app:container-server]</div><div class="line">use = egg:swift#container</div><div class="line">[container-replicator]</div><div class="line">vm_test_mode=no</div><div class="line">[container-updater]</div><div class="line">[container-auditor]</div><div class="line">[container-sync]</div><div class="line">[filter:recon]</div><div class="line">use = egg:swift#recon</div><div class="line">recon_cache_path = /var/cache/swift</div><div class="line">[filter:healthcheck]</div><div class="line">use = egg:swift#healthcheck</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置object服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line">bind_ip = 172.18.216.188</div><div class="line">bind_port = 6000</div><div class="line">user = swift</div><div class="line">swift_dir = /etc/swift</div><div class="line">devices = /swift/node1</div><div class="line">mount_check = false</div><div class="line">[pipeline:main]</div><div class="line">pipeline = healthcheck recon object-server</div><div class="line">[app:object-server]</div><div class="line">use = egg:swift#object</div><div class="line">[object-replicator]</div><div class="line">vm_test_mode=no</div><div class="line">[object-updater]</div><div class="line">[object-auditor]</div><div class="line">[object-reconstructor]</div><div class="line">[filter:recon]</div><div class="line">use = egg:swift#recon</div><div class="line">recon_cache_path = /var/cache/swift</div><div class="line">recon_lock_path = /var/lock</div><div class="line">[filter:healthcheck]</div><div class="line">use = egg:swift#healthcheck</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h2 id="拷贝代理节点生成的环文件-scp"><a href="#拷贝代理节点生成的环文件-scp" class="headerlink" title="拷贝代理节点生成的环文件 scp"></a>拷贝代理节点生成的环文件 scp</h2></li>
+<li><h2 id="配置日志"><a href="#配置日志" class="headerlink" title="配置日志"></a>配置日志</h2><ul>
+<li><p>创建swift日志配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># vi /etc/rsyslog.d/10-swift.conf</div><div class="line">local0.* /var/log/swift/proxy.log</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建日志目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># mkdir -p /var/log/swift</div><div class="line"># chown -R swift:swift /var/log/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启日志服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service rsyslog restart</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h2 id="启动服务-1"><a href="#启动服务-1" class="headerlink" title="启动服务"></a>启动服务</h2><ul>
+<li><p>创建cache目录，设置权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># mkdir -p /var/cache/swift</div><div class="line"># chown -R swift:swift /var/cache/swift/</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置/etc/swift目录权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># chown -R swift:swift /etc/swift</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swift-init all start</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="安装验证"><a href="#安装验证" class="headerlink" title="安装验证"></a>安装验证</h1><p>PS:注意先source环境变量</p>
+<ul>
+<li><p>在客户端查看swift验证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swift stat</div></pre></td></tr></table></figure>
+</li>
+<li><p>在客户端上传文件到swift中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swift upload container file</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/openstack/swift" target="_blank" rel="external">OpenStack-Swift GitHub仓库</a></li>
+<li><a href="http://www.aboutyun.com/thread-11722-1-1.html" target="_blank" rel="external">OpenStack【juno】入门系列教程</a></li>
+<li><a href="http://docs.openstack.org/liberty/zh_CN/install-guide-rdo/swift.html" target="_blank" rel="external">OpenStack官方文档 中文版</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/01/04/openstack-swift/" class="archive-article-date">
+  	<time datetime="2017-01-04T12:58:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS7/">CentOS7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openstack/">Openstack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/03/openstack-keystone/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CentOS7安装Openstack【Keystone篇】</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="openstack-swift" data-title="CentOS7安装Openstack【Swift篇】" data-url="https://qiumy.github.io/2017/01/04/openstack-swift/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"slurm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Slurm
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CentOS7/" style="font-size: 12.5px;">CentOS7</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Keystone/" style="font-size: 10px;">Keystone</a> <a href="/tags/Openstack/" style="font-size: 12.5px;">Openstack</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/float/" style="font-size: 10px;">float</a> <a href="/tags/position/" style="font-size: 10px;">position</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a> <a href="/tags/算法导论/" style="font-size: 17.5px;">算法导论</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a> <a href="/tags/静态博客/" style="font-size: 10px;">静态博客</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://huangww26.github.io/">vv</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
