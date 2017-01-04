@@ -3,7 +3,7 @@
 menu:
   主页: /
   #所有文章: /archives
-  技术: /tags/技术
+  技术: /tags/技术/
   FE练习: /FE-Angles/
   #关于我: /aboutme.html
 
@@ -11,8 +11,8 @@ menu:
 subnav:
   github: https://github.com/Qiumy
   weibo: http://weibo.com/slurm/
-  mail: mailto:qiumy3@mail2.sysu.edu.cn  
-  
+  mail: mailto:qiumy3@mail2.sysu.edu.cn
+
   #zhihu: "#"
   #rss: "#"
   #douban: "#"
@@ -26,7 +26,7 @@ rss: /atom.xml
 # 是否需要修改 root 路径
 # 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，
 # 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。
-root: 
+root:
 
 # Content
 excerpt_link: more
