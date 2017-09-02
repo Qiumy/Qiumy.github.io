@@ -2,7 +2,7 @@
 
 menu:
   主页: /
-  #所有文章: /archives
+  所有文章: /archives
   技术: /tags/技术/
   FE练习: /FE-Angles/
   #关于我: /aboutme.html
